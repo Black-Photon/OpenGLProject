@@ -4,5 +4,6 @@
 CMakeFiles/OpenGLProject.dir/src/glad.c.o: ../src/glad.c
 
 CMakeFiles/OpenGLProject.dir/main.cpp.o: ../include/glfw-3.2.1/include/GLFW/glfw3.h
+CMakeFiles/OpenGLProject.dir/main.cpp.o: ../include/glad/glad.h
 CMakeFiles/OpenGLProject.dir/main.cpp.o: ../main.cpp
 

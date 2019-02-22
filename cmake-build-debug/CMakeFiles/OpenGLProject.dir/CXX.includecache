@@ -46,6 +46,12 @@ GL/glext.h
 GL/glu.h
 -
 
+/home/joseph/CLionProjects/OpenGLProject/include/glad/glad.h
+windows.h
+-
+KHR/khrplatform.h
+-
+
 /home/joseph/CLionProjects/OpenGLProject/main.cpp
 iostream
 -
