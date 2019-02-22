@@ -59,4 +59,8 @@ include/glad/glad.h
 /run/media/u1800015/USB BETA/OpenGLProject/include/glad/glad.h
 GLFW/glfw3.h
 -
+string
+-
+fstream
+-
 

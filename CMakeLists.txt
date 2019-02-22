@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(include)
 
 add_executable(OpenGLProject
-        main.cpp
+        ./main.cpp
         src/glad.c
         include/glad/glad.h
         )
