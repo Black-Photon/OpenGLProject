@@ -6,3 +6,25 @@
 
 #IncludeRegexTransform: 
 
+../include/glad/glad.h
+windows.h
+-
+KHR/khrplatform.h
+-
+
+/home/joseph/CLionProjects/OpenGLProject/src/glad.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+glad/glad.h
+-
+windows.h
+-
+winapifamily.h
+-
+dlfcn.h
+-
+
