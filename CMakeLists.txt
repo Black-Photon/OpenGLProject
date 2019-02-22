@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.12)
 project(OpenGLProject)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -19,7 +19,8 @@ set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
-add_subdirectory("/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/")
+#add_subdirectory("/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/")
+add_subdirectory("/run/media/u1800015/USB BETA/OpenGLProject/include/glfw-3.2.1/")
 target_link_libraries(OpenGLProject glfw)
 
 

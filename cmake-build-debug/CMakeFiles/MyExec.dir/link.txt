@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/MyExec.dir/main.cpp.o CMakeFiles/MyExec.dir/src/glad.c.o  -o MyExec 
