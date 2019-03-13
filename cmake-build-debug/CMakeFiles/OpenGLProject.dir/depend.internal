@@ -3,8 +3,8 @@
 
 CMakeFiles/OpenGLProject.dir/src/glad.c.o
  ../include/glad/glad.h
- /home/joseph/CLionProjects/OpenGLProject/src/glad.c
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/glad.c
 CMakeFiles/OpenGLProject.dir/main.cpp.o
  ../include/glfw-3.2.1/include/GLFW/glfw3.h
- /home/joseph/CLionProjects/OpenGLProject/include/glad/glad.h
- /home/joseph/CLionProjects/OpenGLProject/main.cpp
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glad/glad.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/main.cpp
