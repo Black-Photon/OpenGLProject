@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /run/media/u1800015/USB-ALPHA/clion-2018.3.4/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /run/media/u1800015/USB-ALPHA/clion-2018.3.4/bin/cmake/linux/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /run/media/u1800015/USB-ALPHA/C++/OpenGLProject
+CMAKE_SOURCE_DIR = /home/joseph/Documents/Programming/Graphics/OpenGLProject
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug
+CMAKE_BINARY_DIR = /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug
 
 # Utility rule file for uninstall.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-d
 include include/glfw-3.2.1/CMakeFiles/uninstall.dir/progress.make
 
 include/glfw-3.2.1/CMakeFiles/uninstall:
-	cd /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1 && /run/media/u1800015/USB-ALPHA/clion-2018.3.4/bin/cmake/linux/bin/cmake -P /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/cmake_uninstall.cmake
+	cd /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/include/glfw-3.2.1 && /usr/bin/cmake -P /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/cmake_uninstall.cmake
 
 uninstall: include/glfw-3.2.1/CMakeFiles/uninstall
 uninstall: include/glfw-3.2.1/CMakeFiles/uninstall.dir/build.make
@@ -67,10 +67,10 @@ include/glfw-3.2.1/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : include/glfw-3.2.1/CMakeFiles/uninstall.dir/build
 
 include/glfw-3.2.1/CMakeFiles/uninstall.dir/clean:
-	cd /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1 && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
+	cd /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/include/glfw-3.2.1 && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
 .PHONY : include/glfw-3.2.1/CMakeFiles/uninstall.dir/clean
 
 include/glfw-3.2.1/CMakeFiles/uninstall.dir/depend:
-	cd /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /run/media/u1800015/USB-ALPHA/C++/OpenGLProject /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1 /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1 /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/joseph/Documents/Programming/Graphics/OpenGLProject /home/joseph/Documents/Programming/Graphics/OpenGLProject/include/glfw-3.2.1 /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/include/glfw-3.2.1 /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : include/glfw-3.2.1/CMakeFiles/uninstall.dir/depend
 

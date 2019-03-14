@@ -9,10 +9,10 @@
 GLFWwindow * init();
 void framebuffer_size_callback(GLFWwindow * window, int width, int height);
 void processInput(GLFWwindow *window);
-void buildImage(unsigned int *VAO, unsigned int *VBO);
+void buildImage(unsigned int *VAO, unsigned int *VBO, unsigned int *EBO);
 bool getGLSL();
 void makeShaders(unsigned int * shaderProgram);
-void draw(unsigned const int * shaderProgram, unsigned const int * VAO);
+void draw(unsigned const int * shaderProgram, unsigned const int * VAO, unsigned const int * EBO);
 void prerender();
 std::string * getFileContents(std::string filename);
 
@@ -44,8 +44,8 @@ int main()
     makeShaders(&shaderProgram);
 
     // Vertex attribute object and Virtual Buffer Object
-    unsigned int VAO, VBO;
-    buildImage(&VAO, &VBO);
+    unsigned int VAO, VBO, EBO;
+    buildImage(&VAO, &VBO, &EBO);
 
     // Set's the shader to use
     glUseProgram(shaderProgram);
@@ -63,7 +63,7 @@ int main()
         prerender();
 
         // Draw
-        draw(&shaderProgram, &VAO);
+        draw(&shaderProgram, &VAO, &EBO);
 
         // Swap buffers and call events
         glfwSwapBuffers(window);
@@ -125,14 +125,31 @@ void processInput(GLFWwindow * window)
  * @param VAO Location to save the Vertex Array Object index
  * @param VBO Location to save the Vertex Buffer Object index
  */
-void buildImage(unsigned int *VAO, unsigned int *VBO)
+void buildImage(unsigned int *VAO, unsigned int *VBO, unsigned int *EBO)
 {
     // Triangle example
+//    float vertices[] = {
+//            -0.5f, -0.5f, 0.0f,
+//             0.5f, -0.5f, 0.0f,
+//             0.0f,  0.5f, 0.0f
+//    };
+
+    // Double Triangle example
     float vertices[] = {
-            -0.5f, -0.5f, 0.0f,
-             0.5f, -0.5f, 0.0f,
-             0.0f,  0.5f, 0.0f
+            -0.5f, 0.5f, 0.0f,  // top left
+            0.5f, 0.5f, 0.0f,  // top right
+            -0.5f, -0.5f, 0.0f,  // bottom left
+            0.5f, -0.5f, 0.0f  // bottom right
     };
+
+    unsigned int indices[] = {
+            0, 1, 3,
+            0, 2, 3
+    };
+
+    glGenBuffers(1, EBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, *EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     glGenVertexArrays(1, VAO);
     glGenBuffers(1, VBO);
@@ -265,11 +282,14 @@ void makeShaders(unsigned int * shaderProgram)
  * @param shaderProgram Shader program index to draw with
  * @param VAO Array Object index to draw
  */
-void draw(unsigned const int * shaderProgram, unsigned const int * VAO)
+void draw(unsigned const int * shaderProgram, unsigned const int * VAO, unsigned const int * EBO)
 {
     glUseProgram(*shaderProgram);
     glBindVertexArray(*VAO);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, *EBO);
+    //glDrawArrays(GL_TRIANGLES, 0, 3);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
 
 /**
