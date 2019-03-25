@@ -10,15 +10,20 @@ GLFWwindow * init();
 void framebuffer_size_callback(GLFWwindow * window, int width, int height);
 void processInput(GLFWwindow *window);
 void buildImage(unsigned int *VAO, unsigned int *VBO, unsigned int *EBO);
+void bindData(unsigned int VAO, unsigned int VBO, float vertices[], int length);
 bool getGLSL();
 void makeShaders(unsigned int * shaderProgram);
-void draw(unsigned const int * shaderProgram, unsigned const int * VAO, unsigned const int * EBO);
+void linkShaders(unsigned int * shaderProgram, unsigned int vertexShader, unsigned int fragmentShader);
+unsigned int createVertexShader(const char * vertexShaderSource);
+unsigned int createFragmentShader(const char * fragmentShaderSource);
+void draw(unsigned const int shaderProgram, unsigned const int VAO, unsigned const int * EBO);
 void prerender();
 std::string * getFileContents(std::string filename);
 
 // Global Variables
 const char *vertexShaderSource;
-const char *fragmentShaderSource;
+const char *fragmentShaderSourceOrange;
+const char *fragmentShaderSourceYellow;
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
@@ -40,15 +45,14 @@ int main()
     }
 
     // Program
-    unsigned int shaderProgram;
-    makeShaders(&shaderProgram);
+    unsigned int shaderProgram[2] = {};
+    makeShaders(shaderProgram);
 
     // Vertex attribute object and Virtual Buffer Object
-    unsigned int VAO, VBO, EBO;
-    buildImage(&VAO, &VBO, &EBO);
-
-    // Set's the shader to use
-    glUseProgram(shaderProgram);
+    unsigned int EBO;
+    unsigned int VBO[2] = {};
+    unsigned int VAO[2] = {};
+    buildImage(VAO, VBO, &EBO);
 
     // Creates the actual main viewport, and makes it adjust for window size changes
     glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
@@ -59,19 +63,21 @@ int main()
         // Input
         processInput(window);
 
-        // Render
+        // Pre-Render
         prerender();
 
         // Draw
-        draw(&shaderProgram, &VAO, &EBO);
+        draw(shaderProgram[0], VAO[0], &EBO);
+        draw(shaderProgram[1], VAO[1], &EBO);
 
         // Swap buffers and call events
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
+    // Deletes VAO and VBO data from memory
+    glDeleteVertexArrays(2, VAO);
+    glDeleteBuffers(2, VBO);
 
     glfwTerminate();
     return 0;
@@ -84,7 +90,7 @@ int main()
 GLFWwindow * init()
 {
     // Sets all the window settings
-    glfwInit();
+    glfwInit(); // Required
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -97,10 +103,12 @@ GLFWwindow * init()
         glfwTerminate();
         return nullptr;
     }
+    // Tells it what window to apply OpenGL operations to
     glfwMakeContextCurrent(window);
+    // Tells OpenGL to use this function when resizing
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    // Set's up GLAD
+    // Sets up GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
@@ -116,6 +124,7 @@ GLFWwindow * init()
  */
 void processInput(GLFWwindow * window)
 {
+    // Pretty Straightforward
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 }
@@ -124,6 +133,7 @@ void processInput(GLFWwindow * window)
  * Builds the image putting results into values
  * @param VAO Location to save the Vertex Array Object index
  * @param VBO Location to save the Vertex Buffer Object index
+ * @param EBO Location to save the Element Buffer Object index
  */
 void buildImage(unsigned int *VAO, unsigned int *VBO, unsigned int *EBO)
 {
@@ -135,34 +145,39 @@ void buildImage(unsigned int *VAO, unsigned int *VBO, unsigned int *EBO)
 //    };
 
     // Double Triangle example
-    float vertices[] = {
-            -0.5f, 0.5f, 0.0f,  // top left
-            0.5f, 0.5f, 0.0f,  // top right
-            -0.5f, -0.5f, 0.0f,  // bottom left
-            0.5f, -0.5f, 0.0f  // bottom right
+    float vertices1[] = {
+            -0.8f, 0.0f, 0.0f,
+            -0.4f, 0.5f, 0.0f,
+            0.0f, 0.0f, 0.0f
+    };
+
+    float vertices2[] = {
+            0.0f, -0.5f, 0.0f,
+            0.4f, 0.0f, 0.0f,
+            0.8f, -0.5f, 0.0f
     };
 
     unsigned int indices[] = {
-            0, 1, 3,
-            0, 2, 3
+            0, 1, 2
     };
 
+    // Generates the Element Buffer Object
     glGenBuffers(1, EBO);
+    // Binds the buffer to the buffer type so glBufferData works on this
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, *EBO);
+    // Allocates memory for and stores the indices data
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-    glGenVertexArrays(1, VAO);
-    glGenBuffers(1, VBO);
-    // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
-    glBindVertexArray(*VAO);
+    // Generates a Vertex Array Object
+    glGenVertexArrays(2, VAO);
+    // Generates the Vertex Buffer Objects
+    glGenBuffers(2, VBO);
 
-    glBindBuffer(GL_ARRAY_BUFFER, *VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    bindData(VAO[0], VBO[0], vertices1, 9);
+    bindData(VAO[1], VBO[1], vertices2, 9);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-    glEnableVertexAttribArray(0);
-
-    // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
+    // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
+    // Unbinds the buffer
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
@@ -171,11 +186,38 @@ void buildImage(unsigned int *VAO, unsigned int *VBO, unsigned int *EBO)
 }
 
 /**
+ * Binds VAO and VBO data to the vertices passed
+ * @param VAO VAO to bind
+ * @param VBO VBO to use
+ * @param vertices Vertices to bind to VBO
+ * @param length Length of array
+ */
+void bindData(unsigned int VAO, unsigned int VBO, float vertices[], int length)
+{
+    // Bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
+    // Binds the VAO so glVertexAttribPointer and glEnableVertexAttribArray work on this VAO
+    glBindVertexArray(VAO);
+
+    // Binds the buffer to the buffer type so glBufferData works on this
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    // Allocates memory for and stores the vertices data
+    glBufferData(GL_ARRAY_BUFFER, length*sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    // Enables a generic vertex attribute at the given index
+    glEnableVertexAttribArray(0);
+    // Tells OpenGL how to interpret the vertex buffer data
+    // Index, Size, Type, Normalized, Stride, Pointer
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+}
+
+/**
  * Pre-renders the screen creating the background and clearing the colour buffer
  */
 void prerender()
 {
+    // Makes the screen this colour
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    // Clears the buffer with the clear colour
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
@@ -203,10 +245,17 @@ bool getGLSL()
         return false;
     }
 
-    fragmentShaderSource = getFileContents("../shaders/fragmentShader.vert")->c_str();
+    fragmentShaderSourceOrange = getFileContents("../shaders/fragmentShaderOrange.vert")->c_str();
 
-    if(vertexShaderSource == nullptr){
+    if(fragmentShaderSourceOrange == nullptr){
         std::cout << std::string("Could not find fragment shader file") << std::endl;
+        return false;
+    }
+
+    fragmentShaderSourceYellow = getFileContents("../shaders/fragmentShaderYellow.vert")->c_str();
+
+    if(fragmentShaderSourceYellow == nullptr){
+        std::cout << std::string("Could not find fragment shader 2 file") << std::endl;
         return false;
     }
 
@@ -219,17 +268,70 @@ bool getGLSL()
  */
 void makeShaders(unsigned int * shaderProgram)
 {
+    unsigned int vertexShader = createVertexShader(vertexShaderSource);
+
+    unsigned int fragmentShaderOrange = createFragmentShader(fragmentShaderSourceOrange);
+
+    linkShaders(shaderProgram, vertexShader, fragmentShaderOrange);
+
+    // Deletes the now unneeded shaders (As already compiled and linked)
+    glDeleteShader(fragmentShaderOrange);
+
+    unsigned int fragmentShaderYellow = createFragmentShader(fragmentShaderSourceYellow);
+
+    linkShaders(shaderProgram + 1, vertexShader, fragmentShaderYellow);
+
+    // Deletes the now unneeded shaders (As already compiled and linked)
+    glDeleteShader(vertexShader);
+    glDeleteShader(fragmentShaderYellow);
+
+}
+
+void linkShaders(unsigned int * shaderProgram, unsigned int vertexShader, unsigned int fragmentShader)
+{
+    int success;
+    char infoLog[512];
+
+    // SHADER LINKING
+    // Creates a basic program object
+    *shaderProgram = glCreateProgram();
+    // Attaches a compiled shader object to a program
+    glAttachShader(*shaderProgram, vertexShader);
+    glAttachShader(*shaderProgram, fragmentShader);
+    // Links all the shaders in the program together
+    glLinkProgram(*shaderProgram);
+
+    glGetProgramiv(*shaderProgram, GL_LINK_STATUS, &success);
+
+    if(!success)
+    {
+        glGetProgramInfoLog(shaderProgram[1], 512, nullptr, infoLog);
+        std::cerr << "ERROR::SHADER::PROGRAM::LINKING_FAILED" << infoLog << std::endl;
+    }
+    else
+    {
+        std::cout << "INFO::SHADER::PROGRAM::LINKING_SUCCESS" << std::endl;
+    }
+}
+
+unsigned int createVertexShader(const char * vertexShaderSource)
+{
     // VERTEX SHADERS
+    // Makes an empty vertex shader
     unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
+    // Replaces the current shader source code with that given by the .vert files
     glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
+    // Compiles the shader object using source code just given
     glCompileShader(vertexShader);
 
     int success;
     char infoLog[512];
+    // Gets specific info about an element of a shader
     glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
 
     if(!success)
     {
+        // Returns the error log
         glGetShaderInfoLog(vertexShader, 512, nullptr, infoLog);
         std::cerr << "ERROR::SHADER::VERTEX::COMPILATION_FAILED" << infoLog << std::endl;
     }
@@ -238,7 +340,15 @@ void makeShaders(unsigned int * shaderProgram)
         std::cout << "INFO::SHADER::VERTEX::COMPILATION_SUCCESS" << std::endl;
     }
 
+    return vertexShader;
+}
+
+unsigned int createFragmentShader(const char * fragmentShaderSource)
+{
     // FRAGMENT SHADERS
+    int success;
+    char infoLog[512];
+
     unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
     glCompileShader(fragmentShader);
@@ -255,26 +365,7 @@ void makeShaders(unsigned int * shaderProgram)
         std::cout << "INFO::SHADER::FRAGMENT::COMPILATION_SUCCESS" << std::endl;
     }
 
-    // SHADER LINKING
-    *shaderProgram = glCreateProgram();
-    glAttachShader(*shaderProgram, vertexShader);
-    glAttachShader(*shaderProgram, fragmentShader);
-    glLinkProgram(*shaderProgram);
-
-    glGetProgramiv(*shaderProgram, GL_LINK_STATUS, &success);
-
-    if(!success)
-    {
-        glGetProgramInfoLog(*shaderProgram, 512, nullptr, infoLog);
-        std::cerr << "ERROR::SHADER::PROGRAM::LINKING_FAILED" << infoLog << std::endl;
-    }
-    else
-    {
-        std::cout << "INFO::SHADER::PROGRAM::LINKING_SUCCESS" << std::endl;
-    }
-
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
+    return fragmentShader;
 }
 
 /**
@@ -282,14 +373,20 @@ void makeShaders(unsigned int * shaderProgram)
  * @param shaderProgram Shader program index to draw with
  * @param VAO Array Object index to draw
  */
-void draw(unsigned const int * shaderProgram, unsigned const int * VAO, unsigned const int * EBO)
+void draw(unsigned const int shaderProgram, unsigned const int VAO, unsigned const int * EBO)
 {
-    glUseProgram(*shaderProgram);
-    glBindVertexArray(*VAO);
+
+    // Sets the shader program to use
+    glUseProgram(shaderProgram);
+    // Binds the VAO so glVertexAttribPointer and glEnableVertexAttribArray work on this VAO
+    glBindVertexArray(VAO);
+    // Binds the buffer to the buffer type so glBufferData works on this
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, *EBO);
     //glDrawArrays(GL_TRIANGLES, 0, 3);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+    // Tells OpenGL how to render the polygons
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    // Renders vertices in VBO using EBO
+    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 }
 
 /**

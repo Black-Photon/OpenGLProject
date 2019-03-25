@@ -7,11 +7,11 @@ C_FLAGS = -g
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/joseph/Documents/Programming/Graphics/OpenGLProject/include -I/home/joseph/Documents/Programming/Graphics/OpenGLProject/include/glfw-3.2.1/include 
+C_INCLUDES = -I/home/joseph/CLionProjects/OpenGLProject/include -I/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/include 
 
 CXX_FLAGS = -g   -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/joseph/Documents/Programming/Graphics/OpenGLProject/include -I/home/joseph/Documents/Programming/Graphics/OpenGLProject/include/glfw-3.2.1/include 
+CXX_INCLUDES = -I/home/joseph/CLionProjects/OpenGLProject/include -I/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/include 
 

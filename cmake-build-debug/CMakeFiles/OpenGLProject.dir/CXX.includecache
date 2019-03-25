@@ -46,17 +46,17 @@ GL/glext.h
 GL/glu.h
 -
 
-/home/joseph/Documents/Programming/Graphics/OpenGLProject/include/glad/glad.h
+/home/joseph/CLionProjects/OpenGLProject/include/glad/glad.h
 windows.h
 -
 KHR/khrplatform.h
 -
 
-/home/joseph/Documents/Programming/Graphics/OpenGLProject/main.cpp
+/home/joseph/CLionProjects/OpenGLProject/main.cpp
 iostream
 -
 include/glad/glad.h
-/home/joseph/Documents/Programming/Graphics/OpenGLProject/include/glad/glad.h
+/home/joseph/CLionProjects/OpenGLProject/include/glad/glad.h
 GLFW/glfw3.h
 -
 string

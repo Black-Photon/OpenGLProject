@@ -1,4 +1,4 @@
-# Install script for directory: /home/joseph/Documents/Programming/Graphics/OpenGLProject
+# Install script for directory: /home/joseph/CLionProjects/OpenGLProject
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/cmake_install.cmake")
+  include("/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/cmake_install.cmake")
 
 endif()
 
@@ -51,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

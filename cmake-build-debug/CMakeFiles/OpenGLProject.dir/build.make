@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/joseph/Documents/Programming/Graphics/OpenGLProject
+CMAKE_SOURCE_DIR = /home/joseph/CLionProjects/OpenGLProject
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug
+CMAKE_BINARY_DIR = /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/OpenGLProject.dir/depend.make
@@ -59,29 +59,29 @@ include CMakeFiles/OpenGLProject.dir/flags.make
 
 CMakeFiles/OpenGLProject.dir/main.cpp.o: CMakeFiles/OpenGLProject.dir/flags.make
 CMakeFiles/OpenGLProject.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OpenGLProject.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OpenGLProject.dir/main.cpp.o -c /home/joseph/Documents/Programming/Graphics/OpenGLProject/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OpenGLProject.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OpenGLProject.dir/main.cpp.o -c /home/joseph/CLionProjects/OpenGLProject/main.cpp
 
 CMakeFiles/OpenGLProject.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OpenGLProject.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joseph/Documents/Programming/Graphics/OpenGLProject/main.cpp > CMakeFiles/OpenGLProject.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joseph/CLionProjects/OpenGLProject/main.cpp > CMakeFiles/OpenGLProject.dir/main.cpp.i
 
 CMakeFiles/OpenGLProject.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OpenGLProject.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joseph/Documents/Programming/Graphics/OpenGLProject/main.cpp -o CMakeFiles/OpenGLProject.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joseph/CLionProjects/OpenGLProject/main.cpp -o CMakeFiles/OpenGLProject.dir/main.cpp.s
 
 CMakeFiles/OpenGLProject.dir/src/glad.c.o: CMakeFiles/OpenGLProject.dir/flags.make
 CMakeFiles/OpenGLProject.dir/src/glad.c.o: ../src/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/OpenGLProject.dir/src/glad.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/OpenGLProject.dir/src/glad.c.o   -c /home/joseph/Documents/Programming/Graphics/OpenGLProject/src/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/OpenGLProject.dir/src/glad.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/OpenGLProject.dir/src/glad.c.o   -c /home/joseph/CLionProjects/OpenGLProject/src/glad.c
 
 CMakeFiles/OpenGLProject.dir/src/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/OpenGLProject.dir/src/glad.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/joseph/Documents/Programming/Graphics/OpenGLProject/src/glad.c > CMakeFiles/OpenGLProject.dir/src/glad.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/joseph/CLionProjects/OpenGLProject/src/glad.c > CMakeFiles/OpenGLProject.dir/src/glad.c.i
 
 CMakeFiles/OpenGLProject.dir/src/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/OpenGLProject.dir/src/glad.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/joseph/Documents/Programming/Graphics/OpenGLProject/src/glad.c -o CMakeFiles/OpenGLProject.dir/src/glad.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/joseph/CLionProjects/OpenGLProject/src/glad.c -o CMakeFiles/OpenGLProject.dir/src/glad.c.s
 
 # Object files for target OpenGLProject
 OpenGLProject_OBJECTS = \
@@ -103,7 +103,7 @@ OpenGLProject: /usr/lib/libXinerama.so
 OpenGLProject: /usr/lib/libXxf86vm.so
 OpenGLProject: /usr/lib/libXcursor.so
 OpenGLProject: CMakeFiles/OpenGLProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable OpenGLProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable OpenGLProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OpenGLProject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -116,6 +116,6 @@ CMakeFiles/OpenGLProject.dir/clean:
 .PHONY : CMakeFiles/OpenGLProject.dir/clean
 
 CMakeFiles/OpenGLProject.dir/depend:
-	cd /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/joseph/Documents/Programming/Graphics/OpenGLProject /home/joseph/Documents/Programming/Graphics/OpenGLProject /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/CMakeFiles/OpenGLProject.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/joseph/CLionProjects/OpenGLProject /home/joseph/CLionProjects/OpenGLProject /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles/OpenGLProject.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/OpenGLProject.dir/depend
 

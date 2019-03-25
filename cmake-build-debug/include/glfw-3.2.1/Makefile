@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/joseph/Documents/Programming/Graphics/OpenGLProject
+CMAKE_SOURCE_DIR = /home/joseph/CLionProjects/OpenGLProject
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug
+CMAKE_BINARY_DIR = /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/CMakeFiles /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/CMakeFiles/progress.marks
-	cd /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 include/glfw-3.2.1/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug/CMakeFiles 0
+	cd /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/CMakeFiles/progress.marks
+	cd /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 include/glfw-3.2.1/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 include/glfw-3.2.1/clean
+	cd /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 include/glfw-3.2.1/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 include/glfw-3.2.1/preinstall
+	cd /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 include/glfw-3.2.1/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 include/glfw-3.2.1/preinstall
+	cd /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 include/glfw-3.2.1/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 include/glfw-3.2.1/CMakeFiles/uninstall.dir/rule:
-	cd /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 include/glfw-3.2.1/CMakeFiles/uninstall.dir/rule
+	cd /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 include/glfw-3.2.1/CMakeFiles/uninstall.dir/rule
 .PHONY : include/glfw-3.2.1/CMakeFiles/uninstall.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ uninstall: include/glfw-3.2.1/CMakeFiles/uninstall.dir/rule
 
 # fast build rule for target.
 uninstall/fast:
-	cd /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug && $(MAKE) -f include/glfw-3.2.1/CMakeFiles/uninstall.dir/build.make include/glfw-3.2.1/CMakeFiles/uninstall.dir/build
+	cd /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug && $(MAKE) -f include/glfw-3.2.1/CMakeFiles/uninstall.dir/build.make include/glfw-3.2.1/CMakeFiles/uninstall.dir/build
 .PHONY : uninstall/fast
 
 # Help Target
@@ -195,6 +195,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/joseph/Documents/Programming/Graphics/OpenGLProject/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
