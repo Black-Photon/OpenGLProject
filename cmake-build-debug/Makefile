@@ -195,6 +195,33 @@ glfw/fast:
 	$(MAKE) -f include/glfw-3.2.1/src/CMakeFiles/glfw.dir/build.make include/glfw-3.2.1/src/CMakeFiles/glfw.dir/build
 .PHONY : glfw/fast
 
+Shader.o: Shader.cpp.o
+
+.PHONY : Shader.o
+
+# target to build an object file
+Shader.cpp.o:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/Shader.cpp.o
+.PHONY : Shader.cpp.o
+
+Shader.i: Shader.cpp.i
+
+.PHONY : Shader.i
+
+# target to preprocess a source file
+Shader.cpp.i:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/Shader.cpp.i
+.PHONY : Shader.cpp.i
+
+Shader.s: Shader.cpp.s
+
+.PHONY : Shader.s
+
+# target to generate assembly for a file
+Shader.cpp.s:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/Shader.cpp.s
+.PHONY : Shader.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -264,6 +291,9 @@ help:
 	@echo "... install"
 	@echo "... uninstall"
 	@echo "... glfw"
+	@echo "... Shader.o"
+	@echo "... Shader.i"
+	@echo "... Shader.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

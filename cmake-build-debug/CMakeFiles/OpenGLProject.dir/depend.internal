@@ -4,7 +4,13 @@
 CMakeFiles/OpenGLProject.dir/src/glad.c.o
  ../include/glad/glad.h
  /home/joseph/CLionProjects/OpenGLProject/src/glad.c
+CMakeFiles/OpenGLProject.dir/Shader.cpp.o
+ ../include/glad/glad.h
+ /home/joseph/CLionProjects/OpenGLProject/Shader.cpp
+ /home/joseph/CLionProjects/OpenGLProject/Shader.h
 CMakeFiles/OpenGLProject.dir/main.cpp.o
+ ../include/glad/glad.h
  ../include/glfw-3.2.1/include/GLFW/glfw3.h
+ /home/joseph/CLionProjects/OpenGLProject/Shader.h
  /home/joseph/CLionProjects/OpenGLProject/include/glad/glad.h
  /home/joseph/CLionProjects/OpenGLProject/main.cpp

@@ -15,6 +15,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../include/glfw-3.2.1/include"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/joseph/CLionProjects/OpenGLProject/Shader.cpp" "/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles/OpenGLProject.dir/Shader.cpp.o"
   "/home/joseph/CLionProjects/OpenGLProject/main.cpp" "/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles/OpenGLProject.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

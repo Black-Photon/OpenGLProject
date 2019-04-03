@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/OpenGLProject.dir/main.cpp.o"
   "CMakeFiles/OpenGLProject.dir/src/glad.c.o"
+  "CMakeFiles/OpenGLProject.dir/Shader.cpp.o"
   "OpenGLProject.pdb"
   "OpenGLProject"
 )
