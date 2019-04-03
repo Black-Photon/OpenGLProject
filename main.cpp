@@ -1,8 +1,12 @@
+#include <cmath>
+
 #include <iostream>
 #include "include/glad/glad.h"
 #include <GLFW/glfw3.h>
 #include <string>
 #include <fstream>
+#include <tgmath.h>
+#include <cmath>
 
 // Prototypes
 
@@ -24,6 +28,7 @@ std::string * getFileContents(std::string filename);
 const char *vertexShaderSource;
 const char *fragmentShaderSourceOrange;
 const char *fragmentShaderSourceYellow;
+const char *fragmentShaderSource;
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
@@ -33,6 +38,7 @@ const unsigned int SCR_HEIGHT = 600;
  */
 int main()
 {
+
     GLFWwindow * window = init();
     if(window == nullptr)
     {
@@ -259,6 +265,13 @@ bool getGLSL()
         return false;
     }
 
+    fragmentShaderSource = getFileContents("../shaders/fragmentShader.vert")->c_str();
+
+    if(fragmentShaderSource == nullptr){
+        std::cout << std::string("Could not find fragment shader 3 file") << std::endl;
+        return false;
+    }
+
     return true;
 }
 
@@ -270,21 +283,23 @@ void makeShaders(unsigned int * shaderProgram)
 {
     unsigned int vertexShader = createVertexShader(vertexShaderSource);
 
+    unsigned int fragmentShader = createFragmentShader(fragmentShaderSource);
+
     unsigned int fragmentShaderOrange = createFragmentShader(fragmentShaderSourceOrange);
 
-    linkShaders(shaderProgram, vertexShader, fragmentShaderOrange);
+    linkShaders(shaderProgram, vertexShader, fragmentShader);
 
     // Deletes the now unneeded shaders (As already compiled and linked)
     glDeleteShader(fragmentShaderOrange);
 
     unsigned int fragmentShaderYellow = createFragmentShader(fragmentShaderSourceYellow);
 
-    linkShaders(shaderProgram + 1, vertexShader, fragmentShaderYellow);
+    linkShaders(shaderProgram + 1, vertexShader, fragmentShader);
 
     // Deletes the now unneeded shaders (As already compiled and linked)
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShaderYellow);
-
+    glDeleteShader(fragmentShader);
 }
 
 void linkShaders(unsigned int * shaderProgram, unsigned int vertexShader, unsigned int fragmentShader)
@@ -375,9 +390,17 @@ unsigned int createFragmentShader(const char * fragmentShaderSource)
  */
 void draw(unsigned const int shaderProgram, unsigned const int VAO, unsigned const int * EBO)
 {
+    float time = glfwGetTime();
+    float greenColour = (std::sin(time) / 2.0f) + 0.5f;
+    float redColour = (std::cos(time) / 2.0f) + 0.5f;
+    float blueColour = (std::sin(time) / 2.0f) + 0.25f;
+    // Simply gets the index for the vertexColor uniform
+    int vertexColourLocation = glGetUniformLocation(shaderProgram, "vertexColor");
 
     // Sets the shader program to use
     glUseProgram(shaderProgram);
+    // Sets the uniform value
+    glUniform4f(vertexColourLocation, redColour, greenColour, blueColour, 1.0f);
     // Binds the VAO so glVertexAttribPointer and glEnableVertexAttribArray work on this VAO
     glBindVertexArray(VAO);
     // Binds the buffer to the buffer type so glBufferData works on this
@@ -394,7 +417,7 @@ void draw(unsigned const int shaderProgram, unsigned const int VAO, unsigned con
  * @param filename Name of file to get contents of
  * @return Contents of file
  */
-std::string * getFileContents(std::string filename)
+std::string * getFileContents(const std::string filename)
 {
     // Create a stream for the string file data
     std::ifstream ifs(filename);

@@ -53,6 +53,8 @@ KHR/khrplatform.h
 -
 
 /home/joseph/CLionProjects/OpenGLProject/main.cpp
+cmath
+-
 iostream
 -
 include/glad/glad.h
@@ -62,5 +64,9 @@ GLFW/glfw3.h
 string
 -
 fstream
+-
+tgmath.h
+-
+cmath
 -
 
