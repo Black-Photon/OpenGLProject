@@ -190,6 +190,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/Shader.h">
+			<Option target="OpenGLProject"/>
+		</Unit>
 		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/glfw_config.h">
 			<Option target="glfw"/>
 		</Unit>

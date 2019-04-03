@@ -26,8 +26,6 @@ std::string * getFileContents(std::string filename);
 
 // Global Variables
 const char *vertexShaderSource;
-const char *fragmentShaderSourceOrange;
-const char *fragmentShaderSourceYellow;
 const char *fragmentShaderSource;
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
@@ -144,23 +142,10 @@ void processInput(GLFWwindow * window)
 void buildImage(unsigned int *VAO, unsigned int *VBO, unsigned int *EBO)
 {
     // Triangle example
-//    float vertices[] = {
-//            -0.5f, -0.5f, 0.0f,
-//             0.5f, -0.5f, 0.0f,
-//             0.0f,  0.5f, 0.0f
-//    };
-
-    // Double Triangle example
-    float vertices1[] = {
-            -0.8f, 0.0f, 0.0f,
-            -0.4f, 0.5f, 0.0f,
-            0.0f, 0.0f, 0.0f
-    };
-
-    float vertices2[] = {
-            0.0f, -0.5f, 0.0f,
-            0.4f, 0.0f, 0.0f,
-            0.8f, -0.5f, 0.0f
+    float vertices[] = {
+            -0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,
+             0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,
+             0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f
     };
 
     unsigned int indices[] = {
@@ -175,12 +160,11 @@ void buildImage(unsigned int *VAO, unsigned int *VBO, unsigned int *EBO)
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // Generates a Vertex Array Object
-    glGenVertexArrays(2, VAO);
+    glGenVertexArrays(1, VAO);
     // Generates the Vertex Buffer Objects
-    glGenBuffers(2, VBO);
+    glGenBuffers(1, VBO);
 
-    bindData(VAO[0], VBO[0], vertices1, 9);
-    bindData(VAO[1], VBO[1], vertices2, 9);
+    bindData(VAO[0], VBO[0], vertices, 18);
 
     // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
     // Unbinds the buffer
@@ -209,20 +193,72 @@ void bindData(unsigned int VAO, unsigned int VBO, float vertices[], int length)
     // Allocates memory for and stores the vertices data
     glBufferData(GL_ARRAY_BUFFER, length*sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    // Enables a generic vertex attribute at the given index
-    glEnableVertexAttribArray(0);
+    // Position
     // Tells OpenGL how to interpret the vertex buffer data
     // Index, Size, Type, Normalized, Stride, Pointer
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    // Enables a generic vertex attribute at the given index
+    glEnableVertexAttribArray(0);
+
+    // Colour
+    // Tells OpenGL how to interpret the vertex buffer data
+    // Index, Size, Type, Normalized, Stride, Pointer
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    // Enables a generic vertex attribute at the given index
+    glEnableVertexAttribArray(1);
 }
+
+float red = 1;
+float green = 0;
+float blue = 0;
+int varyRed = 0;
+int varyGreen = 1;
+int varyBlue = 0;
 
 /**
  * Pre-renders the screen creating the background and clearing the colour buffer
  */
 void prerender()
 {
+    //float time = glfwGetTime();
+    red = red + 0.01 * varyRed;
+    green = green + 0.01 * varyGreen;
+    blue = blue + 0.01 * varyBlue;
+
+    if(varyGreen == 1 && green >= 1) {
+        green = 1;
+        varyRed = -1;
+        varyGreen = 0;
+        varyBlue = 0;
+    } else if(varyRed == -1 && red <= 0) {
+        red = 0;
+        varyRed = 0;
+        varyGreen = 0;
+        varyBlue = 1;
+    } else if(varyBlue == 1 && blue >= 1) {
+        blue = 1;
+        varyRed = 0;
+        varyGreen = -1;
+        varyBlue = 0;
+    } else if(varyGreen == -1 && green <= 0) {
+        green = 0;
+        varyRed = 1;
+        varyGreen = 0;
+        varyBlue = 0;
+    } else if(varyRed == 1 && red >= 1) {
+        red = 1;
+        varyRed = 0;
+        varyGreen = 0;
+        varyBlue = -1;
+    } else if(varyBlue == -1 && blue <= 0) {
+        blue = 0;
+        varyRed = 0;
+        varyGreen = 1;
+        varyBlue = 0;
+    }
+
     // Makes the screen this colour
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClearColor(red, green, blue, 1.0f);
     // Clears the buffer with the clear colour
     glClear(GL_COLOR_BUFFER_BIT);
 }
@@ -251,20 +287,6 @@ bool getGLSL()
         return false;
     }
 
-    fragmentShaderSourceOrange = getFileContents("../shaders/fragmentShaderOrange.vert")->c_str();
-
-    if(fragmentShaderSourceOrange == nullptr){
-        std::cout << std::string("Could not find fragment shader file") << std::endl;
-        return false;
-    }
-
-    fragmentShaderSourceYellow = getFileContents("../shaders/fragmentShaderYellow.vert")->c_str();
-
-    if(fragmentShaderSourceYellow == nullptr){
-        std::cout << std::string("Could not find fragment shader 2 file") << std::endl;
-        return false;
-    }
-
     fragmentShaderSource = getFileContents("../shaders/fragmentShader.vert")->c_str();
 
     if(fragmentShaderSource == nullptr){
@@ -285,20 +307,10 @@ void makeShaders(unsigned int * shaderProgram)
 
     unsigned int fragmentShader = createFragmentShader(fragmentShaderSource);
 
-    unsigned int fragmentShaderOrange = createFragmentShader(fragmentShaderSourceOrange);
-
     linkShaders(shaderProgram, vertexShader, fragmentShader);
 
     // Deletes the now unneeded shaders (As already compiled and linked)
-    glDeleteShader(fragmentShaderOrange);
-
-    unsigned int fragmentShaderYellow = createFragmentShader(fragmentShaderSourceYellow);
-
-    linkShaders(shaderProgram + 1, vertexShader, fragmentShader);
-
-    // Deletes the now unneeded shaders (As already compiled and linked)
     glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShaderYellow);
     glDeleteShader(fragmentShader);
 }
 
@@ -390,17 +402,8 @@ unsigned int createFragmentShader(const char * fragmentShaderSource)
  */
 void draw(unsigned const int shaderProgram, unsigned const int VAO, unsigned const int * EBO)
 {
-    float time = glfwGetTime();
-    float greenColour = (std::sin(time) / 2.0f) + 0.5f;
-    float redColour = (std::cos(time) / 2.0f) + 0.5f;
-    float blueColour = (std::sin(time) / 2.0f) + 0.25f;
-    // Simply gets the index for the vertexColor uniform
-    int vertexColourLocation = glGetUniformLocation(shaderProgram, "vertexColor");
-
     // Sets the shader program to use
     glUseProgram(shaderProgram);
-    // Sets the uniform value
-    glUniform4f(vertexColourLocation, redColour, greenColour, blueColour, 1.0f);
     // Binds the VAO so glVertexAttribPointer and glEnableVertexAttribArray work on this VAO
     glBindVertexArray(VAO);
     // Binds the buffer to the buffer type so glBufferData works on this

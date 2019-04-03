@@ -11,7 +11,7 @@ add_executable(OpenGLProject
         ./main.cpp
         src/glad.c
         include/glad/glad.h
-        )
+        Shader.h)
 
 # GLFW
 
