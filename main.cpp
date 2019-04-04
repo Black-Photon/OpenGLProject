@@ -9,7 +9,11 @@
 #include <tgmath.h>
 #include <cmath>
 #define STB_IMAGE_IMPLEMENTATION
-#include "src/stb_image.h"
+#include "stb_image.h"
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 // Prototypes
 
@@ -23,6 +27,8 @@ void prerender();
 GLenum glCheckError_(const char *file, int line);
 #define glCheckError() glCheckError_(__FILE__, __LINE__)
 void generateTexture(unsigned int * texture, const char * path, bool isPNG);
+void transform(Shader shader);
+void transform2(Shader shader);
 
 // Global Variables
 const unsigned int SCR_WIDTH = 800;
@@ -122,6 +128,8 @@ GLFWwindow * init()
     return window;
 }
 
+float percent = 0.2;
+
 /**
  * Polls and processes any user input
  * @param window Window to poll
@@ -131,6 +139,15 @@ void processInput(GLFWwindow * window)
     // Pretty Straightforward
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+
+    if(glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+        percent+=0.01;
+
+    if(glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+        percent-=0.01;
+
+    if(percent < 0) percent = 0;
+    if(percent > 1) percent = 1;
 }
 
 /**
@@ -294,6 +311,9 @@ void draw(Shader shader, unsigned const int VAO, unsigned const int * EBO, unsig
 {
     // Sets the shader program to use
     shader.use();
+    shader.setFloat("percent", percent);
+    transform(shader);
+
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture[0]);
     glActiveTexture(GL_TEXTURE1);
@@ -306,6 +326,9 @@ void draw(Shader shader, unsigned const int VAO, unsigned const int * EBO, unsig
     // Tells OpenGL how to render the polygons
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     // Renders vertices in VBO using EBO
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+    transform2(shader);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
     // Checks any recent errors
@@ -339,7 +362,7 @@ void generateTexture(unsigned int * texture, const char * path, bool isPNG)
     glGenTextures(1, texture);
     glBindTexture(GL_TEXTURE_2D, *texture);
     // set the texture wrapping/filtering options (on the currently bound texture object)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -365,4 +388,27 @@ void generateTexture(unsigned int * texture, const char * path, bool isPNG)
     }
 
     stbi_image_free(data);
+}
+
+void transform(Shader shader)
+{
+//    glm::mat4 trans = glm::mat4(1.0f);
+//    trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+//    trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
+    glm::mat4 trans = glm::mat4(1.0f);
+    trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+    trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+
+    unsigned int transformLoc = glGetUniformLocation(shader.ID, "transform");
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+}
+
+void transform2(Shader shader)
+{
+    glm::mat4 trans = glm::mat4(1.0f);
+    trans = glm::translate(trans, glm::vec3(-0.5f, 0.5f, 0.0f));
+    trans = glm::scale(trans, glm::vec3(1.0f) * (sin((float) glfwGetTime())/2+0.5f));
+
+    unsigned int transformLoc = glGetUniformLocation(shader.ID, "transform");
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 }

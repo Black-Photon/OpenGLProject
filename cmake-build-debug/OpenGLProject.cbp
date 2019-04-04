@@ -277,13 +277,13 @@
 		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/xkb_unicode.h">
 			<Option target="glfw"/>
 		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/stb_image.h">
+			<Option target="OpenGLProject"/>
+		</Unit>
 		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/main.cpp">
 			<Option target="OpenGLProject"/>
 		</Unit>
 		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/src/glad.c">
-			<Option target="OpenGLProject"/>
-		</Unit>
-		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/src/stb_image.h">
 			<Option target="OpenGLProject"/>
 		</Unit>
 		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/CMakeLists.txt">
