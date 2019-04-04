@@ -283,6 +283,9 @@
 		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/src/glad.c">
 			<Option target="OpenGLProject"/>
 		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/src/stb_image.h">
+			<Option target="OpenGLProject"/>
+		</Unit>
 		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

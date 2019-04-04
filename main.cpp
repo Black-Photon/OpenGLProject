@@ -8,6 +8,8 @@
 #include <fstream>
 #include <tgmath.h>
 #include <cmath>
+#define STB_IMAGE_IMPLEMENTATION
+#include "src/stb_image.h"
 
 // Prototypes
 
@@ -16,8 +18,11 @@ void framebuffer_size_callback(GLFWwindow * window, int width, int height);
 void processInput(GLFWwindow *window);
 void buildImage(unsigned int *VAO, unsigned int *VBO, unsigned int *EBO);
 void bindData(unsigned int VAO, unsigned int VBO, float vertices[], int length);
-void draw(Shader shader, unsigned const int VAO, unsigned const int * EBO);
+void draw(Shader shader, unsigned const int VAO, unsigned const int * EBO, unsigned const int texture[]);
 void prerender();
+GLenum glCheckError_(const char *file, int line);
+#define glCheckError() glCheckError_(__FILE__, __LINE__)
+void generateTexture(unsigned int * texture, const char * path, bool isPNG);
 
 // Global Variables
 const unsigned int SCR_WIDTH = 800;
@@ -38,6 +43,16 @@ int main()
     // Program
     Shader shader("../shaders/vertexShader.vert", "../shaders/fragmentShader.frag");
 
+    unsigned int texture[2];
+
+    stbi_set_flip_vertically_on_load(true);
+    generateTexture(texture, "../assets/wall.jpg", false);
+    generateTexture(texture + 1, "../assets/awesomeface.png", true);
+
+    shader.use(); // Must activate shader to use uniforms
+    shader.setInt("ourTexture", 0);
+    shader.setInt("otherTexture", 1);
+
     // Vertex attribute object and Virtual Buffer Object
     unsigned int EBO;
     unsigned int VBO[1] = {};
@@ -57,7 +72,7 @@ int main()
         prerender();
 
         // Draw
-        draw(shader, VAO[0], &EBO);
+        draw(shader, VAO[0], &EBO, texture);
 
         // Swap buffers and call events
         glfwSwapBuffers(window);
@@ -128,13 +143,16 @@ void buildImage(unsigned int *VAO, unsigned int *VBO, unsigned int *EBO)
 {
     // Triangle example
     float vertices[] = {
-            -0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,
-             0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,
-             0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f
+            // Position          // Colour          // Location
+            -0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  0.0f, 0.0f,
+             0.5f, -0.5f, 0.0f,  0.5f, 0.5f, 0.0f,  1.0f, 0.0f,
+            -0.5f,  0.5f, 0.0f,  0.0f, 0.5f, 0.5f,  0.0f, 1.0f,
+             0.5f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f,  1.0f, 1.0f
     };
 
     unsigned int indices[] = {
-            0, 1, 2
+            0, 1, 2,
+            1, 2, 3
     };
 
     // Generates the Element Buffer Object
@@ -181,16 +199,23 @@ void bindData(unsigned int VAO, unsigned int VBO, float vertices[], int length)
     // Position
     // Tells OpenGL how to interpret the vertex buffer data
     // Index, Size, Type, Normalized, Stride, Pointer
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     // Enables a generic vertex attribute at the given index
     glEnableVertexAttribArray(0);
 
     // Colour
     // Tells OpenGL how to interpret the vertex buffer data
     // Index, Size, Type, Normalized, Stride, Pointer
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
     // Enables a generic vertex attribute at the given index
     glEnableVertexAttribArray(1);
+
+    // Location
+    // Tells OpenGL how to interpret the vertex buffer data
+    // Index, Size, Type, Normalized, Stride, Pointer
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    // Enables a generic vertex attribute at the given index
+    glEnableVertexAttribArray(2);
 }
 
 float red = 1;
@@ -265,10 +290,14 @@ void framebuffer_size_callback(GLFWwindow * window, int width, int height)
  * @param shaderProgram Shader program index to draw with
  * @param VAO Array Object index to draw
  */
-void draw(Shader shader, unsigned const int VAO, unsigned const int * EBO)
+void draw(Shader shader, unsigned const int VAO, unsigned const int * EBO, unsigned const int texture[])
 {
     // Sets the shader program to use
     shader.use();
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture[0]);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, texture[1]);
     // Binds the VAO so glVertexAttribPointer and glEnableVertexAttribArray work on this VAO
     glBindVertexArray(VAO);
     // Binds the buffer to the buffer type so glBufferData works on this
@@ -277,5 +306,63 @@ void draw(Shader shader, unsigned const int VAO, unsigned const int * EBO)
     // Tells OpenGL how to render the polygons
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     // Renders vertices in VBO using EBO
-    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+    // Checks any recent errors
+    glCheckError();
+}
+
+GLenum glCheckError_(const char *file, int line)
+{
+    GLenum errorCode;
+    while ((errorCode = glGetError()) != GL_NO_ERROR)
+    {
+        std::string error;
+        switch (errorCode)
+        {
+            case GL_INVALID_ENUM:                  error = "INVALID_ENUM"; break;
+            case GL_INVALID_VALUE:                 error = "INVALID_VALUE"; break;
+            case GL_INVALID_OPERATION:             error = "INVALID_OPERATION"; break;
+            case GL_STACK_OVERFLOW:                error = "STACK_OVERFLOW"; break;
+            case GL_STACK_UNDERFLOW:               error = "STACK_UNDERFLOW"; break;
+            case GL_OUT_OF_MEMORY:                 error = "OUT_OF_MEMORY"; break;
+            case GL_INVALID_FRAMEBUFFER_OPERATION: error = "INVALID_FRAMEBUFFER_OPERATION"; break;
+            default:                               error = "UNKNOWN_ERROR"; break;
+        }
+        std::cout << error << " | " << file << " (" << line << ")" << std::endl;
+    }
+    return errorCode;
+}
+
+void generateTexture(unsigned int * texture, const char * path, bool isPNG)
+{
+    glGenTextures(1, texture);
+    glBindTexture(GL_TEXTURE_2D, *texture);
+    // set the texture wrapping/filtering options (on the currently bound texture object)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    int width, height, nrChannels;
+    unsigned char *data = stbi_load(path, &width, &height, &nrChannels, 0);
+
+    GLenum useAlpha;
+    if(isPNG) {
+        useAlpha = GL_RGBA;
+    } else {
+        useAlpha = GL_RGB;
+    }
+
+    if (data)
+    {
+        // Target Dimension, Mipmap level, Texture Format, width, height, 0, Format, Data Type, Image
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, useAlpha, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cerr << "Failed to load texture" << std::endl;
+    }
+
+    stbi_image_free(data);
 }

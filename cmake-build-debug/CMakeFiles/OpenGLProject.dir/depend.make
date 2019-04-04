@@ -13,4 +13,5 @@ CMakeFiles/OpenGLProject.dir/main.cpp.o: ../include/glfw-3.2.1/include/GLFW/glfw
 CMakeFiles/OpenGLProject.dir/main.cpp.o: ../Shader.h
 CMakeFiles/OpenGLProject.dir/main.cpp.o: ../include/glad/glad.h
 CMakeFiles/OpenGLProject.dir/main.cpp.o: ../main.cpp
+CMakeFiles/OpenGLProject.dir/main.cpp.o: ../src/stb_image.h
 

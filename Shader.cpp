@@ -2,12 +2,12 @@
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath)
 {
-    std::string* vertexLocation = new std::string;
-    std::string* fragmentLocation = new std::string;
-    readVertexFile(vertexPath, vertexLocation);
-    readFragmentFile(fragmentPath, fragmentLocation);
-    const char* vShaderCode = (*vertexLocation).c_str();
-    const char* fShaderCode = (*fragmentLocation).c_str();
+    std::string vertexLocation;// = new std::string;
+    std::string fragmentLocation;// = new std::string;
+    readVertexFile(vertexPath, &vertexLocation);
+    readFragmentFile(fragmentPath, &fragmentLocation);
+    const char* vShaderCode = (vertexLocation).c_str();
+    const char* fShaderCode = (fragmentLocation).c_str();
 
     unsigned int vertex, fragment;
     vertex = createVertexShader(vShaderCode);
@@ -17,8 +17,6 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     // Delete the shaders as they're linked into our program now and no longer necessery
     glDeleteShader(vertex);
     glDeleteShader(fragment);
-    delete(vertexLocation);
-    delete(fragmentLocation);
 }
 
 void Shader::use()
@@ -110,7 +108,7 @@ void Shader::linkShaders(unsigned int * shaderProgram, unsigned int vertexShader
     }
     else
     {
-        std::cerr << "INFO::SHADER::PROGRAM::LINKING_SUCCESS" << std::endl;
+        std::cout << "INFO::SHADER::PROGRAM::LINKING_SUCCESS" << std::endl;
     }
 }
 
@@ -133,7 +131,7 @@ unsigned int Shader::createVertexShader(const char * vertexShaderSource)
     {
         // Returns the error log
         glGetShaderInfoLog(vertexShader, 512, nullptr, infoLog);
-        std::cerr << "ERROR::SHADER::VERTEX::COMPILATION_FAILED" << infoLog << std::endl;
+        std::cerr << "ERROR::SHADER::VERTEX::COMPILATION_FAILED " << infoLog << std::endl;
     }
     else
     {
