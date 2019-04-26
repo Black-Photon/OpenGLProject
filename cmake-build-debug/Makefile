@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/joseph/CLionProjects/OpenGLProject
+CMAKE_SOURCE_DIR = /run/media/u1800015/USB-ALPHA/C++/OpenGLProject
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug
+CMAKE_BINARY_DIR = /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,19 +59,19 @@ CMAKE_BINARY_DIR = /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -82,7 +82,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -103,32 +103,32 @@ list_install_components/fast: list_install_components
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
+	/run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
+	/run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/CMakeFiles /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -195,32 +195,140 @@ glfw/fast:
 	$(MAKE) -f include/glfw-3.2.1/src/CMakeFiles/glfw.dir/build.make include/glfw-3.2.1/src/CMakeFiles/glfw.dir/build
 .PHONY : glfw/fast
 
-Shader.o: Shader.cpp.o
+classes/Camera.o: classes/Camera.cpp.o
 
-.PHONY : Shader.o
+.PHONY : classes/Camera.o
 
 # target to build an object file
-Shader.cpp.o:
-	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/Shader.cpp.o
-.PHONY : Shader.cpp.o
+classes/Camera.cpp.o:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/Camera.cpp.o
+.PHONY : classes/Camera.cpp.o
 
-Shader.i: Shader.cpp.i
+classes/Camera.i: classes/Camera.cpp.i
 
-.PHONY : Shader.i
+.PHONY : classes/Camera.i
 
 # target to preprocess a source file
-Shader.cpp.i:
-	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/Shader.cpp.i
-.PHONY : Shader.cpp.i
+classes/Camera.cpp.i:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/Camera.cpp.i
+.PHONY : classes/Camera.cpp.i
 
-Shader.s: Shader.cpp.s
+classes/Camera.s: classes/Camera.cpp.s
 
-.PHONY : Shader.s
+.PHONY : classes/Camera.s
 
 # target to generate assembly for a file
-Shader.cpp.s:
-	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/Shader.cpp.s
-.PHONY : Shader.cpp.s
+classes/Camera.cpp.s:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/Camera.cpp.s
+.PHONY : classes/Camera.cpp.s
+
+classes/CubeModel.o: classes/CubeModel.cpp.o
+
+.PHONY : classes/CubeModel.o
+
+# target to build an object file
+classes/CubeModel.cpp.o:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/CubeModel.cpp.o
+.PHONY : classes/CubeModel.cpp.o
+
+classes/CubeModel.i: classes/CubeModel.cpp.i
+
+.PHONY : classes/CubeModel.i
+
+# target to preprocess a source file
+classes/CubeModel.cpp.i:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/CubeModel.cpp.i
+.PHONY : classes/CubeModel.cpp.i
+
+classes/CubeModel.s: classes/CubeModel.cpp.s
+
+.PHONY : classes/CubeModel.s
+
+# target to generate assembly for a file
+classes/CubeModel.cpp.s:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/CubeModel.cpp.s
+.PHONY : classes/CubeModel.cpp.s
+
+classes/Model.o: classes/Model.cpp.o
+
+.PHONY : classes/Model.o
+
+# target to build an object file
+classes/Model.cpp.o:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/Model.cpp.o
+.PHONY : classes/Model.cpp.o
+
+classes/Model.i: classes/Model.cpp.i
+
+.PHONY : classes/Model.i
+
+# target to preprocess a source file
+classes/Model.cpp.i:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/Model.cpp.i
+.PHONY : classes/Model.cpp.i
+
+classes/Model.s: classes/Model.cpp.s
+
+.PHONY : classes/Model.s
+
+# target to generate assembly for a file
+classes/Model.cpp.s:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/Model.cpp.s
+.PHONY : classes/Model.cpp.s
+
+classes/Shader.o: classes/Shader.cpp.o
+
+.PHONY : classes/Shader.o
+
+# target to build an object file
+classes/Shader.cpp.o:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/Shader.cpp.o
+.PHONY : classes/Shader.cpp.o
+
+classes/Shader.i: classes/Shader.cpp.i
+
+.PHONY : classes/Shader.i
+
+# target to preprocess a source file
+classes/Shader.cpp.i:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/Shader.cpp.i
+.PHONY : classes/Shader.cpp.i
+
+classes/Shader.s: classes/Shader.cpp.s
+
+.PHONY : classes/Shader.s
+
+# target to generate assembly for a file
+classes/Shader.cpp.s:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/Shader.cpp.s
+.PHONY : classes/Shader.cpp.s
+
+classes/SquareModel.o: classes/SquareModel.cpp.o
+
+.PHONY : classes/SquareModel.o
+
+# target to build an object file
+classes/SquareModel.cpp.o:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/SquareModel.cpp.o
+.PHONY : classes/SquareModel.cpp.o
+
+classes/SquareModel.i: classes/SquareModel.cpp.i
+
+.PHONY : classes/SquareModel.i
+
+# target to preprocess a source file
+classes/SquareModel.cpp.i:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/SquareModel.cpp.i
+.PHONY : classes/SquareModel.cpp.i
+
+classes/SquareModel.s: classes/SquareModel.cpp.s
+
+.PHONY : classes/SquareModel.s
+
+# target to generate assembly for a file
+classes/SquareModel.cpp.s:
+	$(MAKE) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/classes/SquareModel.cpp.s
+.PHONY : classes/SquareModel.cpp.s
 
 main.o: main.cpp.o
 
@@ -291,9 +399,21 @@ help:
 	@echo "... install"
 	@echo "... uninstall"
 	@echo "... glfw"
-	@echo "... Shader.o"
-	@echo "... Shader.i"
-	@echo "... Shader.s"
+	@echo "... classes/Camera.o"
+	@echo "... classes/Camera.i"
+	@echo "... classes/Camera.s"
+	@echo "... classes/CubeModel.o"
+	@echo "... classes/CubeModel.i"
+	@echo "... classes/CubeModel.s"
+	@echo "... classes/Model.o"
+	@echo "... classes/Model.i"
+	@echo "... classes/Model.s"
+	@echo "... classes/Shader.o"
+	@echo "... classes/Shader.i"
+	@echo "... classes/Shader.s"
+	@echo "... classes/SquareModel.o"
+	@echo "... classes/SquareModel.i"
+	@echo "... classes/SquareModel.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
