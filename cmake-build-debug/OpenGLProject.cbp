@@ -8,326 +8,336 @@
 		<Option virtualFolders="CMake Files\;CMake Files\include\;CMake Files\include\glfw-3.2.1\;CMake Files\include\glfw-3.2.1\CMake\;CMake Files\include\glfw-3.2.1\CMake\modules\;CMake Files\include\glfw-3.2.1\src\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug"/>
+				<Option working_dir="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install/strip">
-				<Option working_dir="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug"/>
+				<Option working_dir="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug"/>
+				<Option working_dir="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="OpenGLProject">
-				<Option output="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/OpenGLProject" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug"/>
+				<Option output="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/OpenGLProject" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include"/>
-					<Add directory="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/x86_64-redhat-linux"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include"/>
+					<Add directory="/home/joseph/CLionProjects/OpenGLProject/include"/>
+					<Add directory="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenGLProject"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenGLProject"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="OpenGLProject/fast">
-				<Option output="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/OpenGLProject" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug"/>
+				<Option output="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/OpenGLProject" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include"/>
-					<Add directory="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/x86_64-redhat-linux"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include"/>
+					<Add directory="/home/joseph/CLionProjects/OpenGLProject/include"/>
+					<Add directory="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenGLProject/fast"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenGLProject/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug"/>
+				<Option working_dir="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="list_install_components">
-				<Option working_dir="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug"/>
+				<Option working_dir="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install/local">
-				<Option working_dir="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug"/>
+				<Option working_dir="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install">
-				<Option working_dir="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug"/>
+				<Option working_dir="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="uninstall">
-				<Option working_dir="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1"/>
+				<Option working_dir="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/Makefile&quot;  VERBOSE=1 uninstall"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/Makefile&quot;  VERBOSE=1 uninstall"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="glfw">
-				<Option output="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/libglfw3.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src"/>
+				<Option output="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/libglfw3.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-D_GLFW_USE_CONFIG_H"/>
-					<Add directory="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include"/>
-					<Add directory="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/include"/>
-					<Add directory="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src"/>
-					<Add directory="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/x86_64-redhat-linux"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include"/>
+					<Add directory="/home/joseph/CLionProjects/OpenGLProject/include"/>
+					<Add directory="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/include"/>
+					<Add directory="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src"/>
+					<Add directory="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 glfw"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 glfw"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="glfw/fast">
-				<Option output="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/libglfw3.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src"/>
+				<Option output="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/libglfw3.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-D_GLFW_USE_CONFIG_H"/>
-					<Add directory="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include"/>
-					<Add directory="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/include"/>
-					<Add directory="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src"/>
-					<Add directory="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/x86_64-redhat-linux"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include"/>
+					<Add directory="/home/joseph/CLionProjects/OpenGLProject/include"/>
+					<Add directory="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/include"/>
+					<Add directory="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src"/>
+					<Add directory="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/../../../../include/c++/8.2.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 glfw/fast"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 glfw/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Camera.cpp">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/classes/Camera.cpp">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Camera.h">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/classes/Camera.h">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/CubeModel.cpp">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/classes/CubeModel.cpp">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/CubeModel.h">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/classes/CubeModel.h">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.cpp">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/classes/LightModel.cpp">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/classes/LightModel.h">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.cpp">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/classes/Model.cpp">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/classes/Model.h">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/SquareModel.cpp">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/classes/Shader.cpp">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/SquareModel.h">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/classes/Shader.h">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/glfw_config.h">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glad/glad.h">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/classes/SquareModel.cpp">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/include/GLFW/glfw3.h">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/include/GLFW/glfw3native.h">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/context.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/egl_context.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/egl_context.h">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/glx_context.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/glx_context.h">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/init.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/input.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/internal.h">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/linux_joystick.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/linux_joystick.h">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/monitor.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/posix_time.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/posix_time.h">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/posix_tls.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/posix_tls.h">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/vulkan.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/window.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/x11_init.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/x11_monitor.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/x11_platform.h">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/x11_window.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/xkb_unicode.c">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/xkb_unicode.h">
-			<Option target="glfw"/>
-		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/stb_image.h">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/classes/SquareModel.h">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/main.cpp">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src/glfw_config.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glad/glad.h">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/glad.c">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/include/GLFW/glfw3.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/include/GLFW/glfw3native.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/egl_context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/egl_context.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/glx_context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/glx_context.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/init.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/input.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/internal.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/linux_joystick.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/linux_joystick.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/monitor.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/posix_time.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/posix_time.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/posix_tls.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/posix_tls.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/vulkan.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/window.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/x11_init.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/x11_monitor.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/x11_platform.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/x11_window.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/xkb_unicode.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/xkb_unicode.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/stb_image.h">
 			<Option target="OpenGLProject"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/CMakeLists.txt">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/main.cpp">
+			<Option target="OpenGLProject"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/src/glad.c">
+			<Option target="OpenGLProject"/>
+		</Unit>
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/CMakeLists.txt">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\include\glfw-3.2.1\"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/cmake_uninstall.cmake.in">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/cmake_uninstall.cmake.in">
 			<Option virtualFolder="CMake Files\include\glfw-3.2.1\"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/CMake/modules/FindVulkan.cmake">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/CMake/modules/FindVulkan.cmake">
 			<Option virtualFolder="CMake Files\include\glfw-3.2.1\CMake\modules\"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/CMakeLists.txt">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\include\glfw-3.2.1\src\"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/glfw3.pc.in">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/glfw3.pc.in">
 			<Option virtualFolder="CMake Files\include\glfw-3.2.1\src\"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/glfw3Config.cmake.in">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/glfw3Config.cmake.in">
 			<Option virtualFolder="CMake Files\include\glfw-3.2.1\src\"/>
 		</Unit>
-		<Unit filename="/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src/glfw_config.h.in">
+		<Unit filename="/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src/glfw_config.h.in">
 			<Option virtualFolder="CMake Files\include\glfw-3.2.1\src\"/>
 		</Unit>
 	</Project>

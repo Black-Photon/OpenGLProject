@@ -4,51 +4,50 @@
 
 #include "Model.h"
 
-static constexpr float SIZE = 0.25f;
+static constexpr float SIZE = 0.5f;
 
 static constexpr float vertices[] = {
-        // Position          // Texture
-        -SIZE, -SIZE, -SIZE, 0.0f, 0.0f,
-        SIZE, -SIZE, -SIZE, 1.0f, 0.0f,
-        SIZE,  SIZE, -SIZE, 1.0f, 1.0f,
-        SIZE,  SIZE, -SIZE, 1.0f, 1.0f,
-        -SIZE,  SIZE, -SIZE, 0.0f, 1.0f,
-        -SIZE, -SIZE, -SIZE, 0.0f, 0.0f,
+        -SIZE, -SIZE, -SIZE,  0.0f,  0.0f, -1.0f,
+        SIZE, -SIZE, -SIZE,  0.0f,  0.0f, -1.0f,
+        SIZE,  SIZE, -SIZE,  0.0f,  0.0f, -1.0f,
+        SIZE,  SIZE, -SIZE,  0.0f,  0.0f, -1.0f,
+        -SIZE,  SIZE, -SIZE,  0.0f,  0.0f, -1.0f,
+        -SIZE, -SIZE, -SIZE,  0.0f,  0.0f, -1.0f,
 
-        -SIZE, -SIZE,  SIZE, 0.0f, 0.0f,
-        SIZE, -SIZE,  SIZE, 1.0f, 0.0f,
-        SIZE,  SIZE,  SIZE, 1.0f, 1.0f,
-        SIZE,  SIZE,  SIZE, 1.0f, 1.0f,
-        -SIZE,  SIZE,  SIZE, 0.0f, 1.0f,
-        -SIZE, -SIZE,  SIZE, 0.0f, 0.0f,
+        -SIZE, -SIZE,  SIZE,  0.0f,  0.0f, 1.0f,
+        SIZE, -SIZE,  SIZE,  0.0f,  0.0f, 1.0f,
+        SIZE,  SIZE,  SIZE,  0.0f,  0.0f, 1.0f,
+        SIZE,  SIZE,  SIZE,  0.0f,  0.0f, 1.0f,
+        -SIZE,  SIZE,  SIZE,  0.0f,  0.0f, 1.0f,
+        -SIZE, -SIZE,  SIZE,  0.0f,  0.0f, 1.0f,
 
-        -SIZE,  SIZE,  SIZE, 1.0f, 0.0f,
-        -SIZE,  SIZE, -SIZE, 1.0f, 1.0f,
-        -SIZE, -SIZE, -SIZE, 0.0f, 1.0f,
-        -SIZE, -SIZE, -SIZE, 0.0f, 1.0f,
-        -SIZE, -SIZE,  SIZE, 0.0f, 0.0f,
-        -SIZE,  SIZE,  SIZE, 1.0f, 0.0f,
+        -SIZE,  SIZE,  SIZE, -1.0f,  0.0f,  0.0f,
+        -SIZE,  SIZE, -SIZE, -1.0f,  0.0f,  0.0f,
+        -SIZE, -SIZE, -SIZE, -1.0f,  0.0f,  0.0f,
+        -SIZE, -SIZE, -SIZE, -1.0f,  0.0f,  0.0f,
+        -SIZE, -SIZE,  SIZE, -1.0f,  0.0f,  0.0f,
+        -SIZE,  SIZE,  SIZE, -1.0f,  0.0f,  0.0f,
 
-        SIZE,  SIZE,  SIZE, 1.0f, 0.0f,
-        SIZE,  SIZE, -SIZE, 1.0f, 1.0f,
-        SIZE, -SIZE, -SIZE, 0.0f, 1.0f,
-        SIZE, -SIZE, -SIZE, 0.0f, 1.0f,
-        SIZE, -SIZE,  SIZE, 0.0f, 0.0f,
-        SIZE,  SIZE,  SIZE, 1.0f, 0.0f,
+        SIZE,  SIZE,  SIZE,  1.0f,  0.0f,  0.0f,
+        SIZE,  SIZE, -SIZE,  1.0f,  0.0f,  0.0f,
+        SIZE, -SIZE, -SIZE,  1.0f,  0.0f,  0.0f,
+        SIZE, -SIZE, -SIZE,  1.0f,  0.0f,  0.0f,
+        SIZE, -SIZE,  SIZE,  1.0f,  0.0f,  0.0f,
+        SIZE,  SIZE,  SIZE,  1.0f,  0.0f,  0.0f,
 
-        -SIZE, -SIZE, -SIZE, 0.0f, 1.0f,
-        SIZE, -SIZE, -SIZE, 1.0f, 1.0f,
-        SIZE, -SIZE,  SIZE, 1.0f, 0.0f,
-        SIZE, -SIZE,  SIZE, 1.0f, 0.0f,
-        -SIZE, -SIZE,  SIZE, 0.0f, 0.0f,
-        -SIZE, -SIZE, -SIZE, 0.0f, 1.0f,
+        -SIZE, -SIZE, -SIZE,  0.0f, -1.0f,  0.0f,
+        SIZE, -SIZE, -SIZE,  0.0f, -1.0f,  0.0f,
+        SIZE, -SIZE,  SIZE,  0.0f, -1.0f,  0.0f,
+        SIZE, -SIZE,  SIZE,  0.0f, -1.0f,  0.0f,
+        -SIZE, -SIZE,  SIZE,  0.0f, -1.0f,  0.0f,
+        -SIZE, -SIZE, -SIZE,  0.0f, -1.0f,  0.0f,
 
-        -SIZE,  SIZE, -SIZE, 0.0f, 1.0f,
-        SIZE,  SIZE, -SIZE, 1.0f, 1.0f,
-        SIZE,  SIZE,  SIZE, 1.0f, 0.0f,
-        SIZE,  SIZE,  SIZE, 1.0f, 0.0f,
-        -SIZE,  SIZE,  SIZE, 0.0f, 0.0f,
-        -SIZE,  SIZE, -SIZE, 0.0f, 1.0f
+        -SIZE,  SIZE, -SIZE,  0.0f,  1.0f,  0.0f,
+        SIZE,  SIZE, -SIZE,  0.0f,  1.0f,  0.0f,
+        SIZE,  SIZE,  SIZE,  0.0f,  1.0f,  0.0f,
+        SIZE,  SIZE,  SIZE,  0.0f,  1.0f,  0.0f,
+        -SIZE,  SIZE,  SIZE,  0.0f,  1.0f,  0.0f,
+        -SIZE,  SIZE, -SIZE,  0.0f,  1.0f,  0.0f
 };
 
 class CubeModel: public Model {

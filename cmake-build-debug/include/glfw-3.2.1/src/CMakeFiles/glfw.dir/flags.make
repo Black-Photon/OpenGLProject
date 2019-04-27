@@ -6,5 +6,5 @@ C_FLAGS = -g -fPIC   -Wall
 
 C_DEFINES = -D_GLFW_USE_CONFIG_H
 
-C_INCLUDES = -I/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include -I/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/include -I/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/src -I/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src 
+C_INCLUDES = -I/home/joseph/CLionProjects/OpenGLProject/include -I/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/include -I/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/src -I/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/include/glfw-3.2.1/src 
 

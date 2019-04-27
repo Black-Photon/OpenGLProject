@@ -8,6 +8,7 @@
 #include "src/frame.cpp"
 #include "classes/CubeModel.h"
 #include "classes/SquareModel.h"
+#include "classes/LightModel.h"
 
 namespace core {
 
@@ -120,8 +121,26 @@ int main() {
     core::preInit(1920, 1080, "Lighting");
     core::init(true);
 
-    unsigned int cardboard;
-    core::generateTexture(&cardboard, std::string("container.jpg"), false);
+//    unsigned int cardboard;
+//    core::generateTexture(&cardboard, std::string("container.jpg"), false);
+
+    LightModel light;
+
+    Shader lightShader("light.vert", "light.frag", core::Path.shaders);
+
+    Shader *shader = core::Data.shader3d;
+    Model *model = core::Data.models.at(0);
+
+
+    glm::vec3 lightColour(1.0f, 0.5f, 0.8f);
+
+    shader->setVec3("objectColour", 1.0f, 1.0f, 1.0f);
+    shader->setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
+    shader->setFloat("ambientStrength", 0.3f);
+    shader->setFloat("specularStrength", 0.5f);
+
+    lightShader.use();
+    lightShader.setVec3("colour", lightColour.x, lightColour.y, lightColour.z);
 
     while (!core::shouldClose()) {
         float currentFrame = glfwGetTime();
@@ -129,18 +148,31 @@ int main() {
         core::Data.lastFrame = currentFrame;
 
         core::processInput(deltaTime);
-        core::prerender(1.0f, 0.4f, 0.6f);
+        core::prerender(0.1f, 0.1f, 0.1f);
 
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, cardboard);
+//        glActiveTexture(GL_TEXTURE0);
+//        glBindTexture(GL_TEXTURE_2D, cardboard);
 
-        Model *model = core::Data.models.at(0);
+        shader->use();
+        glm::vec3 camera = core::Data.camera->cameraPos;
+
+        shader->setVec3("viewPos", camera.x, camera.y, camera.z);
+
+
+        core::glCheckError();
         model->bind();
-
-        Shader *shader = core::Data.shader3d;
         core::makeModel(*shader);
 
         model->draw(glm::vec3(0.0f, 0.0f, 0.0f), *shader);
+
+
+        glm::vec3 lightPos(2.0f * sin(currentFrame), 1.5f * cos(currentFrame), 1.0f);
+        shader->setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
+
+
+        core::makeModel(lightShader);
+        light.bind();
+        light.draw(lightPos, lightShader);
 
         core::glCheckError();
         glfwPollEvents();
@@ -152,6 +184,21 @@ int main() {
 
         if(glfwGetKey(core::Data.window, GLFW_KEY_W) == GLFW_PRESS) {
             core::Data.camera->moveOnPlane(FORWARD, Y, deltaTime);
+        }
+        if(glfwGetKey(core::Data.window, GLFW_KEY_A) == GLFW_PRESS) {
+            core::Data.camera->moveOnPlane(LEFT, Y, deltaTime);
+        }
+        if(glfwGetKey(core::Data.window, GLFW_KEY_S) == GLFW_PRESS) {
+            core::Data.camera->moveOnPlane(BACKWARD, Y, deltaTime);
+        }
+        if(glfwGetKey(core::Data.window, GLFW_KEY_D) == GLFW_PRESS) {
+            core::Data.camera->moveOnPlane(RIGHT, Y, deltaTime);
+        }
+        if(glfwGetKey(core::Data.window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+            core::Data.camera->moveOnPlane(FORWARD, Z, deltaTime);
+        }
+        if(glfwGetKey(core::Data.window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
+            core::Data.camera->moveOnPlane(BACKWARD, Z, deltaTime);
         }
     }
     core::close();

@@ -1,3 +1,4 @@
+#include <glm/gtc/type_ptr.hpp>
 #include "Shader.h"
 
 Shader::Shader(std::string vertexPath, std::string fragmentPath, std::string location)
@@ -37,6 +38,11 @@ void Shader::setInt(const std::string &name, int value) const
 void Shader::setFloat(const std::string &name, float value) const
 {
     glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
+}
+
+void Shader::setVec3(const std::string &name, float v1, float v2, float v3) const
+{
+    glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, glm::value_ptr(glm::vec3(v1, v2, v3)));
 }
 
 void Shader::readVertexFile(const char* vertexPath, std::string * vertexCode)

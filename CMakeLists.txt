@@ -12,7 +12,7 @@ add_executable(OpenGLProject
         src/glad.c
         include/glad/glad.h
         include/stb_image.h
-        classes/Shader.cpp classes/Camera.cpp classes/CubeModel.cpp classes/SquareModel.cpp classes/Model.cpp)
+        classes/Shader.cpp classes/Camera.cpp classes/CubeModel.cpp classes/SquareModel.cpp classes/Model.cpp classes/LightModel.cpp)
 
 # GLFW
 
@@ -20,8 +20,8 @@ set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
-#add_subdirectory("/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/")
-add_subdirectory("/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/")
+add_subdirectory("/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/")
+#add_subdirectory("/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/")
 #add_subdirectory("/home/joseph/Documents/Programming/Graphics/OpenGLProject/include/glfw-3.2.1/")
 target_link_libraries(OpenGLProject glfw)
 

@@ -120,20 +120,6 @@ type_mat3x2.inl
 
 ../include/glm/./detail/type_mat3x2.inl
 
-../include/glm/./detail/type_mat3x3.hpp
-type_vec3.hpp
-../include/glm/./detail/type_vec3.hpp
-limits
--
-cstddef
--
-type_mat3x3.inl
-../include/glm/./detail/type_mat3x3.inl
-
-../include/glm/./detail/type_mat3x3.inl
-glm/matrix.hpp
-../include/glm/./detail/glm/matrix.hpp
-
 ../include/glm/./detail/type_mat3x4.hpp
 type_vec3.hpp
 ../include/glm/./detail/type_vec3.hpp
@@ -176,24 +162,6 @@ type_mat4x3.inl
 
 ../include/glm/./detail/type_mat4x3.inl
 
-../include/glm/./detail/type_mat4x4.hpp
-type_vec4.hpp
-../include/glm/./detail/type_vec4.hpp
-limits
--
-cstddef
--
-type_mat4x4.inl
-../include/glm/./detail/type_mat4x4.inl
-
-../include/glm/./detail/type_mat4x4.inl
-glm/matrix.hpp
-../include/glm/./detail/glm/matrix.hpp
-type_mat4x4_simd.inl
-../include/glm/./detail/type_mat4x4_simd.inl
-
-../include/glm/./detail/type_mat4x4_simd.inl
-
 ../include/glm/./detail/type_vec2.hpp
 qualifier.hpp
 ../include/glm/./detail/qualifier.hpp
@@ -205,30 +173,6 @@ cstddef
 -
 type_vec2.inl
 ../include/glm/./detail/type_vec2.inl
-
-../include/glm/./detail/type_vec3.hpp
-qualifier.hpp
-../include/glm/./detail/qualifier.hpp
-_swizzle.hpp
-../include/glm/./detail/_swizzle.hpp
-_swizzle_func.hpp
-../include/glm/./detail/_swizzle_func.hpp
-cstddef
--
-type_vec3.inl
-../include/glm/./detail/type_vec3.inl
-
-../include/glm/./detail/type_vec4.hpp
-qualifier.hpp
-../include/glm/./detail/qualifier.hpp
-_swizzle.hpp
-../include/glm/./detail/_swizzle.hpp
-_swizzle_func.hpp
-../include/glm/./detail/_swizzle_func.hpp
-cstddef
--
-type_vec4.inl
-../include/glm/./detail/type_vec4.inl
 
 ../include/glm/./ext/matrix_double2x2.hpp
 ../detail/type_mat2x2.hpp
@@ -1536,31 +1480,23 @@ intrin.h
 arm_neon.h
 -
 
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Camera.cpp
-glm/glm.hpp
--
-glm/gtc/matrix_transform.hpp
--
-stdexcept
--
-iostream
--
-Camera.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Camera.h
+/home/joseph/CLionProjects/OpenGLProject/classes/Camera.h
 
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Camera.h
-
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/CubeModel.h
+/home/joseph/CLionProjects/OpenGLProject/classes/CubeModel.h
 Model.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
+/home/joseph/CLionProjects/OpenGLProject/classes/Model.h
 
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
+/home/joseph/CLionProjects/OpenGLProject/classes/LightModel.h
+Model.h
+/home/joseph/CLionProjects/OpenGLProject/classes/Model.h
+
+/home/joseph/CLionProjects/OpenGLProject/classes/Model.h
 glm/glm.hpp
 -
 Shader.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
+/home/joseph/CLionProjects/OpenGLProject/classes/Shader.h
 
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
+/home/joseph/CLionProjects/OpenGLProject/classes/Shader.h
 glad/glad.h
 -
 string
@@ -1571,52 +1507,56 @@ sstream
 -
 iostream
 -
+glm/glm.hpp
+-
 
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/SquareModel.h
+/home/joseph/CLionProjects/OpenGLProject/classes/SquareModel.h
 Model.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
+/home/joseph/CLionProjects/OpenGLProject/classes/Model.h
 
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/main.cpp
+/home/joseph/CLionProjects/OpenGLProject/main.cpp
 src/include.cpp
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/include.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/include.cpp
 classes/Shader.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
+/home/joseph/CLionProjects/OpenGLProject/classes/Shader.h
 src/data.cpp
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/data.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/data.cpp
 src/preInit.cpp
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/preInit.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/preInit.cpp
 src/init.cpp
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/init.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/init.cpp
 src/frame.cpp
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/frame.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/frame.cpp
 classes/CubeModel.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/CubeModel.h
+/home/joseph/CLionProjects/OpenGLProject/classes/CubeModel.h
 classes/SquareModel.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/SquareModel.h
+/home/joseph/CLionProjects/OpenGLProject/classes/SquareModel.h
+classes/LightModel.h
+/home/joseph/CLionProjects/OpenGLProject/classes/LightModel.h
 
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/data.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/data.cpp
 include.cpp
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/include.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/include.cpp
 ../classes/Shader.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
+/home/joseph/CLionProjects/OpenGLProject/classes/Shader.h
 ../classes/Camera.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Camera.h
+/home/joseph/CLionProjects/OpenGLProject/classes/Camera.h
 ../classes/Model.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
+/home/joseph/CLionProjects/OpenGLProject/classes/Model.h
 
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/frame.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/frame.cpp
 data.cpp
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/data.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/data.cpp
 ../classes/Shader.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
+/home/joseph/CLionProjects/OpenGLProject/classes/Shader.h
 ../classes/Camera.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Camera.h
+/home/joseph/CLionProjects/OpenGLProject/classes/Camera.h
 
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/include.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/include.cpp
 iostream
 -
 glad/glad.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/glad/glad.h
+/home/joseph/CLionProjects/OpenGLProject/src/glad/glad.h
 GLFW/glfw3.h
 -
 string
@@ -1630,7 +1570,7 @@ cmath
 vector
 -
 stb_image.h
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/stb_image.h
+/home/joseph/CLionProjects/OpenGLProject/src/stb_image.h
 glm/glm.hpp
 -
 glm/gtc/matrix_transform.hpp
@@ -1638,11 +1578,11 @@ glm/gtc/matrix_transform.hpp
 glm/gtc/type_ptr.hpp
 -
 
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/init.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/init.cpp
 data.cpp
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/data.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/data.cpp
 
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/preInit.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/preInit.cpp
 data.cpp
-/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/data.cpp
+/home/joseph/CLionProjects/OpenGLProject/src/data.cpp
 

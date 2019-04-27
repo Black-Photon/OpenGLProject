@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/OpenGLProject.dir/classes/CubeModel.cpp.o"
   "CMakeFiles/OpenGLProject.dir/classes/SquareModel.cpp.o"
   "CMakeFiles/OpenGLProject.dir/classes/Model.cpp.o"
+  "CMakeFiles/OpenGLProject.dir/classes/LightModel.cpp.o"
   "OpenGLProject.pdb"
   "OpenGLProject"
 )
