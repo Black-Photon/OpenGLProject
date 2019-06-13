@@ -3,7 +3,7 @@
 
 CMakeFiles/OpenGLProject.dir/src/glad.c.o
  ../include/glad/glad.h
- /home/joseph/CLionProjects/OpenGLProject/src/glad.c
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/glad.c
 CMakeFiles/OpenGLProject.dir/classes/Camera.cpp.o
  ../include/glm/./detail/setup.hpp
  ../include/glm/./detail/type_mat2x2.hpp
@@ -170,8 +170,8 @@ CMakeFiles/OpenGLProject.dir/classes/Camera.cpp.o
  ../include/glm/vec3.hpp
  ../include/glm/vec4.hpp
  ../include/glm/vector_relational.hpp
- /home/joseph/CLionProjects/OpenGLProject/classes/Camera.cpp
- /home/joseph/CLionProjects/OpenGLProject/classes/Camera.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Camera.cpp
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Camera.h
 CMakeFiles/OpenGLProject.dir/classes/CubeModel.cpp.o
  ../include/glad/glad.h
  ../include/glm/./detail/setup.hpp
@@ -328,10 +328,10 @@ CMakeFiles/OpenGLProject.dir/classes/CubeModel.cpp.o
  ../include/glm/vec3.hpp
  ../include/glm/vec4.hpp
  ../include/glm/vector_relational.hpp
- /home/joseph/CLionProjects/OpenGLProject/classes/CubeModel.cpp
- /home/joseph/CLionProjects/OpenGLProject/classes/CubeModel.h
- /home/joseph/CLionProjects/OpenGLProject/classes/Model.h
- /home/joseph/CLionProjects/OpenGLProject/classes/Shader.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/CubeModel.cpp
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/CubeModel.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
 CMakeFiles/OpenGLProject.dir/classes/LightModel.cpp.o
  ../include/glad/glad.h
  ../include/glm/./detail/setup.hpp
@@ -488,10 +488,10 @@ CMakeFiles/OpenGLProject.dir/classes/LightModel.cpp.o
  ../include/glm/vec3.hpp
  ../include/glm/vec4.hpp
  ../include/glm/vector_relational.hpp
- /home/joseph/CLionProjects/OpenGLProject/classes/LightModel.cpp
- /home/joseph/CLionProjects/OpenGLProject/classes/LightModel.h
- /home/joseph/CLionProjects/OpenGLProject/classes/Model.h
- /home/joseph/CLionProjects/OpenGLProject/classes/Shader.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/LightModel.cpp
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/LightModel.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
 CMakeFiles/OpenGLProject.dir/classes/Model.cpp.o
  ../include/glad/glad.h
  ../include/glm/./detail/./compute_vector_relational.hpp
@@ -695,9 +695,9 @@ CMakeFiles/OpenGLProject.dir/classes/Model.cpp.o
  ../include/glm/vec3.hpp
  ../include/glm/vec4.hpp
  ../include/glm/vector_relational.hpp
- /home/joseph/CLionProjects/OpenGLProject/classes/Model.cpp
- /home/joseph/CLionProjects/OpenGLProject/classes/Model.h
- /home/joseph/CLionProjects/OpenGLProject/classes/Shader.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.cpp
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
 CMakeFiles/OpenGLProject.dir/classes/Shader.cpp.o
  ../include/glad/glad.h
  ../include/glm/./detail/setup.hpp
@@ -901,8 +901,8 @@ CMakeFiles/OpenGLProject.dir/classes/Shader.cpp.o
  ../include/glm/vec3.hpp
  ../include/glm/vec4.hpp
  ../include/glm/vector_relational.hpp
- /home/joseph/CLionProjects/OpenGLProject/classes/Shader.cpp
- /home/joseph/CLionProjects/OpenGLProject/classes/Shader.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.cpp
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
 CMakeFiles/OpenGLProject.dir/classes/SquareModel.cpp.o
  ../include/glad/glad.h
  ../include/glm/./detail/type_mat2x2.hpp
@@ -1105,10 +1105,10 @@ CMakeFiles/OpenGLProject.dir/classes/SquareModel.cpp.o
  ../include/glm/vec3.hpp
  ../include/glm/vec4.hpp
  ../include/glm/vector_relational.hpp
- /home/joseph/CLionProjects/OpenGLProject/classes/Model.h
- /home/joseph/CLionProjects/OpenGLProject/classes/Shader.h
- /home/joseph/CLionProjects/OpenGLProject/classes/SquareModel.cpp
- /home/joseph/CLionProjects/OpenGLProject/classes/SquareModel.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/SquareModel.cpp
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/SquareModel.h
 CMakeFiles/OpenGLProject.dir/main.cpp.o
  ../include/glad/glad.h
  ../include/glfw-3.2.1/include/GLFW/glfw3.h
@@ -1314,15 +1314,15 @@ CMakeFiles/OpenGLProject.dir/main.cpp.o
  ../include/glm/vec4.hpp
  ../include/glm/vector_relational.hpp
  ../include/stb_image.h
- /home/joseph/CLionProjects/OpenGLProject/classes/Camera.h
- /home/joseph/CLionProjects/OpenGLProject/classes/CubeModel.h
- /home/joseph/CLionProjects/OpenGLProject/classes/LightModel.h
- /home/joseph/CLionProjects/OpenGLProject/classes/Model.h
- /home/joseph/CLionProjects/OpenGLProject/classes/Shader.h
- /home/joseph/CLionProjects/OpenGLProject/classes/SquareModel.h
- /home/joseph/CLionProjects/OpenGLProject/main.cpp
- /home/joseph/CLionProjects/OpenGLProject/src/data.cpp
- /home/joseph/CLionProjects/OpenGLProject/src/frame.cpp
- /home/joseph/CLionProjects/OpenGLProject/src/include.cpp
- /home/joseph/CLionProjects/OpenGLProject/src/init.cpp
- /home/joseph/CLionProjects/OpenGLProject/src/preInit.cpp
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Camera.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/CubeModel.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/LightModel.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/SquareModel.h
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/main.cpp
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/data.cpp
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/frame.cpp
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/include.cpp
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/init.cpp
+ /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/preInit.cpp

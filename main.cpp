@@ -140,7 +140,6 @@ int main() {
     shader->setFloat("specularStrength", 0.5f);
 
     lightShader.use();
-    lightShader.setVec3("colour", lightColour.x, lightColour.y, lightColour.z);
 
     while (!core::shouldClose()) {
         float currentFrame = glfwGetTime();
@@ -148,7 +147,15 @@ int main() {
         core::Data.lastFrame = currentFrame;
 
         core::processInput(deltaTime);
-        core::prerender(0.1f, 0.1f, 0.1f);
+
+        float colour = sin(currentFrame/10);
+        if(colour < 0.5f && colour > -0.5f) {
+            core::prerender(1.0f * colour, 0.4f * colour, 0.4f * colour);
+        } else if(colour >= 0.5f){
+            core::prerender(0.4f * colour, 0.4f * colour, 1.0f * colour);
+        } else {
+            core::prerender(colour, colour, colour);
+        }
 
 //        glActiveTexture(GL_TEXTURE0);
 //        glBindTexture(GL_TEXTURE_2D, cardboard);
@@ -170,9 +177,22 @@ int main() {
         shader->setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
 
 
+        // Creates the model matrix by translating by coordinates
+        glm::mat4 model = glm::mat4(1.0f);
+        int modelLoc = glGetUniformLocation(lightShader.ID, "model");
+
+        // Sets the relative shader3d uniform
+        lightShader.use();
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+
         core::makeModel(lightShader);
+        lightShader.use();
+        lightShader.setVec3("colour", lightColour.x, lightColour.y, lightColour.z);
         light.bind();
         light.draw(lightPos, lightShader);
+
+        lightShader.setVec3("colour", 1.0f, 0.0f, 1.0f);
+        light.draw(glm::vec3(0, 100, 0), lightShader);
 
         core::glCheckError();
         glfwPollEvents();

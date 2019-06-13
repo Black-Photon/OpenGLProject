@@ -1,22 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_f5d81/fast 
-/usr/bin/make -f CMakeFiles/cmTC_f5d81.dir/build.make CMakeFiles/cmTC_f5d81.dir/build
-make[1]: Entering directory '/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_f5d81.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_f5d81.dir/CheckSymbolExists.c.o   -c /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_f5d81
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f5d81.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_f5d81.dir/CheckSymbolExists.c.o  -o cmTC_f5d81 
-/usr/bin/ld: CMakeFiles/cmTC_f5d81.dir/CheckSymbolExists.c.o: in function `main':
-CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
+Run Build Command(s):/usr/bin/gmake cmTC_c1971/fast 
+/usr/bin/gmake -f CMakeFiles/cmTC_c1971.dir/build.make CMakeFiles/cmTC_c1971.dir/build
+gmake[1]: Entering directory `/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c1971.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_c1971.dir/CheckSymbolExists.c.o   -c /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_c1971
+/run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c1971.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_c1971.dir/CheckSymbolExists.c.o  -o cmTC_c1971 
+CMakeFiles/cmTC_c1971.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_f5d81.dir/build.make:87: cmTC_f5d81] Error 1
-make[1]: Leaving directory '/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_f5d81/fast] Error 2
+gmake[1]: *** [cmTC_c1971] Error 1
+gmake[1]: Leaving directory `/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_c1971/fast] Error 2
 
-File /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
@@ -32,20 +32,20 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_53b21/fast 
-/usr/bin/make -f CMakeFiles/cmTC_53b21.dir/build.make CMakeFiles/cmTC_53b21.dir/build
-make[1]: Entering directory '/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_53b21.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_53b21.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.14/Modules/CheckFunctionExists.c
-Linking C executable cmTC_53b21
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_53b21.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_53b21.dir/CheckFunctionExists.c.o  -o cmTC_53b21 -lpthreads 
+Run Build Command(s):/usr/bin/gmake cmTC_1850c/fast 
+/usr/bin/gmake -f CMakeFiles/cmTC_1850c.dir/build.make CMakeFiles/cmTC_1850c.dir/build
+gmake[1]: Entering directory `/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1850c.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_1850c.dir/CheckFunctionExists.c.o   -c /run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_1850c
+/run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1850c.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_1850c.dir/CheckFunctionExists.c.o  -o cmTC_1850c -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_53b21.dir/build.make:87: cmTC_53b21] Error 1
-make[1]: Leaving directory '/home/joseph/CLionProjects/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_53b21/fast] Error 2
+gmake[1]: *** [cmTC_1850c] Error 1
+gmake[1]: Leaving directory `/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_1850c/fast] Error 2
 
 
