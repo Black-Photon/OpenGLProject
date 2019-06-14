@@ -40,3 +40,5 @@ void SquareModel::draw(glm::vec2 position, glm::vec2 screen, glm::vec2 size, Sha
 
     glDrawArrays(GL_TRIANGLES, 0, 6);
 }
+
+void SquareModel::drawS(glm::vec3 position, Shader shader, float size){}

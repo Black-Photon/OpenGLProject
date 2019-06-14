@@ -40,6 +40,21 @@ void Model::draw(glm::vec3 position, Shader shader, int vertices)
     glDrawArrays(GL_TRIANGLES, 0, vertices);
 }
 
+void Model::drawS(glm::vec3 position, Shader shader, int vertices, float size)
+{
+    // Creates the model matrix by translating by coordinates
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::translate(model, position);
+    model = glm::scale(model, glm::vec3(size));
+    int modelLoc = glGetUniformLocation(shader.ID, "model");
+
+    // Sets the relative shader3d uniform
+    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+
+    // Draws the model
+    glDrawArrays(GL_TRIANGLES, 0, vertices);
+}
+
 void Model::bind()
 {
     glBindVertexArray(VAO);

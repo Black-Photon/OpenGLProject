@@ -27,6 +27,8 @@ public:
      */
     void draw(glm::vec3 position, Shader shader){};
     void draw(glm::vec2 position, glm::vec2 screen, glm::vec2 size, Shader shader);
+
+    void drawS(glm::vec3 position, Shader shader, float size);
 };
 
 

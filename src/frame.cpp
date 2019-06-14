@@ -36,7 +36,7 @@ namespace core {
         // Makes the screen this colour
         glClearColor(r, g, b, 1.0f);
         // Clears the buffer with the clear colour
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // NOLINT(hicpp-signed-bitwise)
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT); // NOLINT(hicpp-signed-bitwise)
     }
 
     void makeModel(Shader shader) {

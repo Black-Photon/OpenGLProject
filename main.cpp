@@ -74,6 +74,7 @@ namespace core {
 
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glEnable(GL_BLEND);
+        glEnable(GL_STENCIL_TEST);
 
         // Program
         auto *shader3d = new Shader("vertexShader.vert", "fragmentShader.frag", Path.shaders);
@@ -131,7 +132,6 @@ int main() {
     Shader *shader = core::Data.shader3d;
     Model *model = core::Data.models.at(0);
 
-
     glm::vec3 lightColour(1.0f, 0.5f, 0.8f);
 
     shader->setVec3("objectColour", 1.0f, 1.0f, 1.0f);
@@ -140,6 +140,8 @@ int main() {
     shader->setFloat("specularStrength", 0.5f);
 
     lightShader.use();
+
+    Shader coolShader("vertexShader.vert", "shaderSingleColour.frag", core::Path.shaders);
 
     while (!core::shouldClose()) {
         float currentFrame = glfwGetTime();
@@ -170,12 +172,29 @@ int main() {
         model->bind();
         core::makeModel(*shader);
 
-        model->draw(glm::vec3(0.0f, 0.0f, 0.0f), *shader);
-
-
         glm::vec3 lightPos(2.0f * sin(currentFrame), 1.5f * cos(currentFrame), 1.0f);
         shader->setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
 
+        glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+
+        glStencilFunc(GL_ALWAYS, 1, 0xFF);
+        glStencilMask(0x00);
+        model->draw(glm::vec3(0.0f, 0.0f, 0.0f), *shader);
+
+        glStencilFunc(GL_ALWAYS, 1, 0xFF);
+        glStencilMask(0xFF);
+        model->draw(glm::vec3(0.0f, 0.0f, -1.5f), *shader);
+
+
+        glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+        glStencilMask(0x00);
+//        glDisable(GL_DEPTH_TEST);
+        coolShader.use();
+        core::makeModel(coolShader);
+        model->drawS(glm::vec3(0.0f, 0.0f, -1.5f), coolShader, 1.2);
+
+        glStencilMask(0xFF);
+//        glEnable(GL_DEPTH_TEST);
 
         // Creates the model matrix by translating by coordinates
         glm::mat4 model = glm::mat4(1.0f);

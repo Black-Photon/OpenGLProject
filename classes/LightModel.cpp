@@ -29,3 +29,8 @@ void LightModel::draw(glm::vec3 position, Shader shader)
 {
     Model::draw(position, shader, 36);
 }
+
+void LightModel::drawS(glm::vec3 position, Shader shader, float size)
+{
+    Model::drawS(position, shader, 36, size);
+}

@@ -30,6 +30,8 @@ public:
      */
     void draw(glm::vec3 position, Shader shader, int vertices);
 
+    void drawS(glm::vec3 position, Shader shader, int vertices, float size);
+
     /**
      * Draws the model to the screen at the given position
      * @param position Position to draw to the screen
@@ -45,6 +47,8 @@ public:
      * @param shader Shader to draw using
      */
     virtual void draw(glm::vec2 position, glm::vec2 screen, glm::vec2 size, Shader shader) = 0;
+
+    virtual void drawS(glm::vec3 position, Shader shader, float size) = 0;
 
     /**
      * Binds the VAO

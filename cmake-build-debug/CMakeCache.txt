@@ -14,6 +14,9 @@
 # EXTERNAL cache entries
 ########################
 
+//The directory containing a CMake configuration file for ASSIMP.
+ASSIMP_DIR:PATH=ASSIMP_DIR-NOTFOUND
+
 //Build shared libraries
 BUILD_SHARED_LIBS:BOOL=OFF
 

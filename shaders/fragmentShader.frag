@@ -11,6 +11,11 @@ uniform vec3 objectColour;
 uniform vec3 lightColour;
 uniform vec3 viewPos;
 
+vec4 average(in vec4 a, in vec4 b)
+{
+    return (a + b) / 2;
+}
+
 void main()
 {
     // Diffuse
@@ -30,5 +35,6 @@ void main()
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
     vec3 specular = specularStrength * spec * lightColour;
 
-    FragColor = vec4((ambient + diffuse + specular) * objectColour, 0.2f);
+    FragColor = vec4((ambient + diffuse + specular) * objectColour, 1.0f);
+    //FragColor = vec4(vec3(pow(gl_FragCoord.z, 10)), 1.0f);
 }
