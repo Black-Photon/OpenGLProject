@@ -122,6 +122,8 @@ int main() {
     core::preInit(1920, 1080, "Lighting");
     core::init(true);
 
+    glStencilMask(0x00); // Read
+
 //    unsigned int cardboard;
 //    core::generateTexture(&cardboard, std::string("container.jpg"), false);
 
@@ -176,25 +178,83 @@ int main() {
         shader->setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
 
         glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+//
+//        // Draw Normal Cube
+//        glStencilFunc(GL_ALWAYS, 1, 0xFF); // Always Draw
+//        glStencilMask(0x00); // Read Only
+//        model->draw(glm::vec3(0.0f, 0.0f, 0.0f), *shader);
+//
+//        // Draw Cube 2
+//        glStencilFunc(GL_ALWAYS, 1, 0xFF); // Always draw
+//        glStencilMask(0xFF); // Write
+//        model->draw(glm::vec3(0.0f, 0.0f, -1.5f), *shader);
+//
+//        // Draw outline for 2
+//        glStencilFunc(GL_NOTEQUAL, 1, 0xFF); // Only draw on non-stencil
+//        glStencilMask(0x00); // Read
+////        glDisable(GL_DEPTH_TEST);
+//        coolShader.use();
+//        core::makeModel(coolShader);
+//        model->drawS(glm::vec3(0.0f, 0.0f, -1.5f), coolShader, 1.2);
 
-        glStencilFunc(GL_ALWAYS, 1, 0xFF);
-        glStencilMask(0x00);
-        model->draw(glm::vec3(0.0f, 0.0f, 0.0f), *shader);
+        shader->setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
 
-        glStencilFunc(GL_ALWAYS, 1, 0xFF);
-        glStencilMask(0xFF);
-        model->draw(glm::vec3(0.0f, 0.0f, -1.5f), *shader);
-
-
-        glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-        glStencilMask(0x00);
-//        glDisable(GL_DEPTH_TEST);
+        glDepthFunc(GL_ALWAYS);
+        glDepthMask(GL_FALSE);
+        glStencilFunc(GL_ALWAYS, 1, 0xFF); // Always draw
+        glStencilMask(0xFF); // Write
         coolShader.use();
         core::makeModel(coolShader);
-        model->drawS(glm::vec3(0.0f, 0.0f, -1.5f), coolShader, 1.2);
+        model->draw(glm::vec3(0.0f, 0.0f, 0.0f), coolShader);
+        glStencilMask(0x00); // Read
 
-        glStencilMask(0xFF);
+        glDepthFunc(GL_LESS);
+        glDepthMask(GL_TRUE);
+
+//        glDisable(GL_DEPTH_TEST);
+        glStencilFunc(GL_EQUAL, 1, 0xFF); // Only draw on stencil
+        glStencilMask(0x00); // Read
+        shader->use();
+        model->draw(glm::vec3(0.0f, 0.0f, -2.0f), *shader);
+        model->draw(glm::vec3(0.0f, 2.0f, -2.0f), *shader);
+        model->draw(glm::vec3(0.0f, 4.0f, -2.0f), *shader);
 //        glEnable(GL_DEPTH_TEST);
+
+        glStencilMask(0xFF); // Write
+//        glStencilMask(0xFF);
+//        glEnable(GL_DEPTH_TEST);
+
+
+        shader->setVec3("lightColour", 0.2, 1, 0.5);
+
+        glDepthFunc(GL_ALWAYS);
+        glDepthMask(GL_FALSE);
+        glStencilFunc(GL_ALWAYS, 2, 0xFF); // Always draw
+        glStencilMask(0xFF); // Write
+        coolShader.use();
+        core::makeModel(coolShader);
+        model->draw(glm::vec3(-1.0f, 0.0f, 0.0f), coolShader);
+        glStencilMask(0x00); // Read
+
+        glDepthFunc(GL_LESS);
+        glDepthMask(GL_TRUE);
+
+//        glDisable(GL_DEPTH_TEST);
+        glStencilFunc(GL_EQUAL, 2, 0xFF); // Only draw on stencil
+        glStencilMask(0x00); // Read
+        shader->use();
+        model->draw(glm::vec3(-1.0f, 0.0f, -2.0f), *shader);
+        model->draw(glm::vec3(-1.0f, 2.0f, -2.0f), *shader);
+        model->draw(glm::vec3(-1.0f, 4.0f, -2.0f), *shader);
+//        glEnable(GL_DEPTH_TEST);
+
+        glStencilMask(0xFF); // Write
+
+
+
+
+
+
 
         // Creates the model matrix by translating by coordinates
         glm::mat4 model = glm::mat4(1.0f);

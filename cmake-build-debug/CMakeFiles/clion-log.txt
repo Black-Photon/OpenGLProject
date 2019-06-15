@@ -1,4 +1,4 @@
-/run/media/u1800015/USB-ALPHA/clion-2019.1.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /run/media/u1800015/USB-ALPHA/C++/OpenGLProject
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/joseph/Documents/Programming/Graphics/OpenGLTest
 CMake Deprecation Warning at include/glfw-3.2.1/CMakeLists.txt:10 (cmake_policy):
   The OLD behavior for policy CMP0042 will be removed from a future version
   of CMake.
@@ -9,8 +9,30 @@ CMake Deprecation Warning at include/glfw-3.2.1/CMakeLists.txt:10 (cmake_policy)
   behavior and not rely on setting a policy to OLD.
 
 
--- Could NOT find Vulkan (missing: VULKAN_LIBRARY VULKAN_INCLUDE_DIR) 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Could NOT find Vulkan (missing: VULKAN_INCLUDE_DIR) 
 -- Using X11 for window creation
+-- Found X11: /usr/include   
+-- Looking for XOpenDisplay in /usr/lib/libX11.so;/usr/lib/libXext.so
+-- Looking for XOpenDisplay in /usr/lib/libX11.so;/usr/lib/libXext.so - found
+-- Looking for gethostbyname
+-- Looking for gethostbyname - found
+-- Looking for connect
+-- Looking for connect - found
+-- Looking for remove
+-- Looking for remove - found
+-- Looking for shmat
+-- Looking for shmat - found
+-- Looking for IceConnectionNumber in ICE
+-- Looking for IceConnectionNumber in ICE - found
 -- Configuring done
 -- Generating done
--- Build files have been written to: /run/media/u1800015/USB-ALPHA/C++/OpenGLProject/cmake-build-debug
+-- Build files have been written to: /home/joseph/Documents/Programming/Graphics/OpenGLTest/cmake-build-debug
