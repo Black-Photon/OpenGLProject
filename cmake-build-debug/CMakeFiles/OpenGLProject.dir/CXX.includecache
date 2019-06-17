@@ -1480,23 +1480,23 @@ intrin.h
 arm_neon.h
 -
 
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/Camera.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Camera.h
 
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/CubeModel.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/CubeModel.h
 Model.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/Model.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
 
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/LightModel.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/LightModel.h
 Model.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/Model.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
 
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/Model.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
 glm/glm.hpp
 -
 Shader.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/Shader.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
 
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/Shader.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
 glad/glad.h
 -
 string
@@ -1510,53 +1510,53 @@ iostream
 glm/glm.hpp
 -
 
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/SquareModel.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/SquareModel.h
 Model.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/Model.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
 
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/main.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/main.cpp
 src/include.cpp
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/include.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/include.cpp
 classes/Shader.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/Shader.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
 src/data.cpp
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/data.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/data.cpp
 src/preInit.cpp
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/preInit.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/preInit.cpp
 src/init.cpp
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/init.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/init.cpp
 src/frame.cpp
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/frame.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/frame.cpp
 classes/CubeModel.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/CubeModel.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/CubeModel.h
 classes/SquareModel.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/SquareModel.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/SquareModel.h
 classes/LightModel.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/LightModel.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/LightModel.h
 
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/data.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/data.cpp
 include.cpp
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/include.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/include.cpp
 ../classes/Shader.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/Shader.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
 ../classes/Camera.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/Camera.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Camera.h
 ../classes/Model.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/Model.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Model.h
 
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/frame.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/frame.cpp
 data.cpp
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/data.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/data.cpp
 ../classes/Shader.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/Shader.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Shader.h
 ../classes/Camera.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/classes/Camera.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/classes/Camera.h
 
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/include.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/include.cpp
 iostream
 -
 glad/glad.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/glad/glad.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/glad/glad.h
 GLFW/glfw3.h
 -
 string
@@ -1570,7 +1570,7 @@ cmath
 vector
 -
 stb_image.h
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/stb_image.h
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/stb_image.h
 glm/glm.hpp
 -
 glm/gtc/matrix_transform.hpp
@@ -1578,11 +1578,11 @@ glm/gtc/matrix_transform.hpp
 glm/gtc/type_ptr.hpp
 -
 
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/init.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/init.cpp
 data.cpp
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/data.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/data.cpp
 
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/preInit.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/preInit.cpp
 data.cpp
-/home/joseph/Documents/Programming/Graphics/OpenGLTest/src/data.cpp
+/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/src/data.cpp
 

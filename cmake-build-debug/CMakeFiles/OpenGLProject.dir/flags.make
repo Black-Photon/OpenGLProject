@@ -7,11 +7,11 @@ C_FLAGS = -g
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/joseph/Documents/Programming/Graphics/OpenGLTest/include -I/home/joseph/Documents/Programming/Graphics/OpenGLTest/include/glfw-3.2.1/include 
+C_INCLUDES = -I/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include -I/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/include 
 
-CXX_FLAGS = -g   -std=gnu++17
+CXX_FLAGS = -g   -std=gnu++1y
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/joseph/Documents/Programming/Graphics/OpenGLTest/include -I/home/joseph/Documents/Programming/Graphics/OpenGLTest/include/glfw-3.2.1/include 
+CXX_INCLUDES = -I/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include -I/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/include 
 

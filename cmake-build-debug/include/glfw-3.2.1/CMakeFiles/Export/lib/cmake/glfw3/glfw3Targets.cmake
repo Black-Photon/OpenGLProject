@@ -55,7 +55,7 @@ add_library(glfw STATIC IMPORTED)
 
 set_target_properties(glfw PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "/usr/lib/librt.so;/usr/lib/libm.so;dl;/usr/lib/libX11.so;-lpthread;/usr/lib/libXrandr.so;/usr/lib/libXinerama.so;/usr/lib/libXxf86vm.so;/usr/lib/libXcursor.so"
+  INTERFACE_LINK_LIBRARIES "/usr/lib64/librt.so;/usr/lib64/libm.so;dl;/usr/lib64/libX11.so;-lpthread;/usr/lib64/libXrandr.so;/usr/lib64/libXinerama.so;/usr/lib64/libXxf86vm.so;/usr/lib64/libXcursor.so"
 )
 
 # Load information for each installed configuration.

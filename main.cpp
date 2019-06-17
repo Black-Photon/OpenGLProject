@@ -197,64 +197,152 @@ int main() {
 //        core::makeModel(coolShader);
 //        model->drawS(glm::vec3(0.0f, 0.0f, -1.5f), coolShader, 1.2);
 
+        shader->setVec3("lightColour", 0.1, 0.3, 1.0);
+        coolShader.use();
+
+        model->draw(glm::vec3(0.0f, 0.0f, 0.0f), coolShader);
+
+        shader->use();
         shader->setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
 
-        glDepthFunc(GL_ALWAYS);
-        glDepthMask(GL_FALSE);
-        glStencilFunc(GL_ALWAYS, 1, 0xFF); // Always draw
-        glStencilMask(0xFF); // Write
-        coolShader.use();
-        core::makeModel(coolShader);
-        model->draw(glm::vec3(0.0f, 0.0f, 0.0f), coolShader);
-        glStencilMask(0x00); // Read
+        for(int f = -4; f < 8; f += 8) {
+            model->draw(glm::vec3(f, -1.0f, 0.0f), *shader);
+            model->draw(glm::vec3(f, 1.0f, 0.0f), *shader);
+            model->draw(glm::vec3(f, -1.0f, -1.0f), *shader);
+            model->draw(glm::vec3(f, 1.0f, -1.0f), *shader);
+            model->draw(glm::vec3(f, -1.0f, 1.0f), *shader);
+            model->draw(glm::vec3(f, 1.0f, 1.0f), *shader);
+            model->draw(glm::vec3(f, 0.0f, -1.0f), *shader);
+            model->draw(glm::vec3(f, 0.0f, 1.0f), *shader);
+            shader->setVec3("lightColour", 0.3, 1, 0.1);
+        }
 
-        glDepthFunc(GL_LESS);
-        glDepthMask(GL_TRUE);
+        shader->setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
 
-//        glDisable(GL_DEPTH_TEST);
-        glStencilFunc(GL_EQUAL, 1, 0xFF); // Only draw on stencil
-        glStencilMask(0x00); // Read
-        shader->use();
-        model->draw(glm::vec3(0.0f, 0.0f, -2.0f), *shader);
-        model->draw(glm::vec3(0.0f, 2.0f, -2.0f), *shader);
-        model->draw(glm::vec3(0.0f, 4.0f, -2.0f), *shader);
-//        glEnable(GL_DEPTH_TEST);
+        glEnable(GL_STENCIL_TEST);
 
-        glStencilMask(0xFF); // Write
-//        glStencilMask(0xFF);
-//        glEnable(GL_DEPTH_TEST);
-
-
-        shader->setVec3("lightColour", 0.2, 1, 0.5);
-
+        // ---------------- FIRST PORTAL --------------------
+        // 1) Creating the portal
         glDepthFunc(GL_ALWAYS);
         glDepthMask(GL_FALSE);
         glStencilFunc(GL_ALWAYS, 2, 0xFF); // Always draw
         glStencilMask(0xFF); // Write
         coolShader.use();
         core::makeModel(coolShader);
-        model->draw(glm::vec3(-1.0f, 0.0f, 0.0f), coolShader);
+
+        glm::vec3 portalLoc(-4.0f, 0.0f, 0.0f);
+        glm::vec3 portalDes(4.0f, 0.0f, 0.0f);
+        glm::vec3 offset = portalLoc - portalDes;
+
+        coolShader.setInt("alpha", 0);
+        model->draw(portalLoc, coolShader);
+        coolShader.setInt("alpha", 1);
         glStencilMask(0x00); // Read
 
         glDepthFunc(GL_LESS);
         glDepthMask(GL_TRUE);
 
-//        glDisable(GL_DEPTH_TEST);
+        // 2) Creating the Contents
         glStencilFunc(GL_EQUAL, 2, 0xFF); // Only draw on stencil
         glStencilMask(0x00); // Read
         shader->use();
-        model->draw(glm::vec3(-1.0f, 0.0f, -2.0f), *shader);
-        model->draw(glm::vec3(-1.0f, 2.0f, -2.0f), *shader);
-        model->draw(glm::vec3(-1.0f, 4.0f, -2.0f), *shader);
-//        glEnable(GL_DEPTH_TEST);
+
+        shader->setVec3("lightColour", 0.1, 0.3, 1.0);
+        coolShader.use();
+
+        model->draw(glm::vec3(0.0f, 0.0f, 0.0f)+offset, coolShader);
+
+        shader->use();
+        shader->setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
+
+        for(int f = -4; f < 8; f += 8) {
+            model->draw(glm::vec3(f, -1.0f, 0.0f)+offset, *shader);
+            model->draw(glm::vec3(f, 1.0f, 0.0f)+offset, *shader);
+            model->draw(glm::vec3(f, -1.0f, -1.0f)+offset, *shader);
+            model->draw(glm::vec3(f, 1.0f, -1.0f)+offset, *shader);
+            model->draw(glm::vec3(f, -1.0f, 1.0f)+offset, *shader);
+            model->draw(glm::vec3(f, 1.0f, 1.0f)+offset, *shader);
+            model->draw(glm::vec3(f, 0.0f, -1.0f)+offset, *shader);
+            model->draw(glm::vec3(f, 0.0f, 1.0f)+offset, *shader);
+            shader->setVec3("lightColour", 0.3, 1, 0.1);
+        }
+
+        shader->setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
 
         glStencilMask(0xFF); // Write
 
+        // 3) Arrival Test
+        Camera* cam = core::Data.camera;
+        if(cam->cameraPos.x > portalLoc.x - 1.0 && cam->cameraPos.x < portalLoc.x)
+        if(cam->cameraPos.y > portalLoc.y - 0.5 && cam->cameraPos.y < portalLoc.y + 0.5)
+        if(cam->cameraPos.z > portalLoc.z - 0.5 && cam->cameraPos.z < portalLoc.z + 0.5)
+        {
+            cam->moveBy(X, 8.0f);
+        }
 
 
+        // ---------------- SECOND PORTAL --------------------
+        // 1) Creating the portal
+        glDepthFunc(GL_ALWAYS);
+        glDepthMask(GL_FALSE);
+        glStencilFunc(GL_ALWAYS, 2, 0xFF); // Always draw
+        glStencilMask(0xFF); // Write
+        coolShader.use();
+        core::makeModel(coolShader);
+
+        glm::vec3 portal2Loc(4.0f, 0.0f, 0.0f);
+        glm::vec3 portal2Des(-4.0f, 0.0f, 0.0f);
+        glm::vec3 offset2 = portal2Loc - portal2Des;
+
+        coolShader.setInt("alpha", 0);
+        model->draw(portal2Loc, coolShader);
+        coolShader.setInt("alpha", 1);
+        glStencilMask(0x00); // Read
+
+        glDepthFunc(GL_LESS);
+        glDepthMask(GL_TRUE);
+
+        // 2) Creating the Contents
+        glStencilFunc(GL_EQUAL, 2, 0xFF); // Only draw on stencil
+        glStencilMask(0x00); // Read
+        shader->use();
+        shader->setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
+
+        shader->setVec3("lightColour", 0.1, 0.3, 1.0);
+        coolShader.use();
+
+        model->draw(glm::vec3(0.0f, 0.0f, 0.0f)+offset2, coolShader);
+
+        shader->use();
+        shader->setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
 
 
+        for(int f = -4; f < 8; f += 8) {
+            model->draw(glm::vec3(f, -1.0f, 0.0f)+offset2, *shader);
+            model->draw(glm::vec3(f, 1.0f, 0.0f)+offset2, *shader);
+            model->draw(glm::vec3(f, -1.0f, -1.0f)+offset2, *shader);
+            model->draw(glm::vec3(f, 1.0f, -1.0f)+offset2, *shader);
+            model->draw(glm::vec3(f, -1.0f, 1.0f)+offset2, *shader);
+            model->draw(glm::vec3(f, 1.0f, 1.0f)+offset2, *shader);
+            model->draw(glm::vec3(f, 0.0f, -1.0f)+offset2, *shader);
+            model->draw(glm::vec3(f, 0.0f, 1.0f)+offset2, *shader);
+            shader->setVec3("lightColour", 0.3, 1, 0.1);
+        }
 
+        shader->setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
+
+        glStencilMask(0xFF); // Write
+
+        // 3) Arrival Test
+        if(cam->cameraPos.x > portal2Loc.x && cam->cameraPos.x < portal2Loc.x + 1.0)
+        if(cam->cameraPos.y > portal2Loc.y - 0.5 && cam->cameraPos.y < portal2Loc.y + 0.5)
+        if(cam->cameraPos.z > portal2Loc.z - 0.5 && cam->cameraPos.z < portal2Loc.z + 0.5)
+        {
+            cam->moveBy(X, -8.0f);
+        }
+
+
+        glDisable(GL_STENCIL_TEST);
 
         // Creates the model matrix by translating by coordinates
         glm::mat4 model = glm::mat4(1.0f);
