@@ -117,29 +117,16 @@ namespace core {
         glfwTerminate();
     }
 
-    void drawScene(Shader shader, Shader coolShader, Model* model, glm::vec3 lightColour, glm::vec3 offset) {
-//        coolShader.use();
-//        model->draw(glm::vec3(0.0f, 0.0f, 0.0f)+offset, coolShader);
+    void drawScene(Shader* shader, Shader lightShader, Model* model, LightModel light, glm::vec3 lightPos, int cardboard) {
+        core::prerender(0.01, 0.01, 0.01);
 
-        shader.use();
-        shader.setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
+        model->bind();
+        core::makeModel(*shader);
+        glBindTexture(GL_TEXTURE_2D, cardboard);
+        model->draw(glm::vec3(0.0, 0.0, 0.0), *shader);
 
-        for(int f = -4; f < 8; f += 8) {
-            model->draw(glm::vec3(f, -1.0f, 0.0f)+offset, shader);
-            model->draw(glm::vec3(f, 1.0f, 0.0f)+offset, shader);
-            model->draw(glm::vec3(f, -1.0f, -1.0f)+offset, shader);
-            model->draw(glm::vec3(f, 1.0f, -1.0f)+offset, shader);
-            model->draw(glm::vec3(f, -1.0f, 1.0f)+offset, shader);
-            model->draw(glm::vec3(f, 1.0f, 1.0f)+offset, shader);
-            model->draw(glm::vec3(f, 0.0f, -1.0f)+offset, shader);
-            model->draw(glm::vec3(f, 0.0f, 1.0f)+offset, shader);
-            shader.setVec3("lightColour", 0.3, 1, 0.1);
-        }
-
-//        shader.setVec3("lightColour", 1.0, 0.3, 0.3);
-//        model->draw(offset, shader);
-
-        shader.setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
+        core::makeModel(lightShader);
+        light.draw(lightPos, lightShader);
     }
 
     void portalAtLoc(glm::vec3 position, Model* model, Shader coolShader) {
@@ -182,8 +169,8 @@ int main() {
     core::preInit(1920, 1080, "Stuff");
     core::init(true);
 
-//    unsigned int cardboard;
-//    core::generateTexture(&cardboard, std::string("container.jpg"), false);
+    unsigned int cardboard;
+    core::generateTexture(&cardboard, std::string("container.jpg"), false);
 
     LightModel light;
 
@@ -194,16 +181,19 @@ int main() {
     Model *model = core::Data.models.at(0);
     Model *model2d = core::Data.models.at(1);
 
-    glm::vec3 lightColour(1.0f, 0.5f, 0.8f);
+    glm::vec3 lightColour(1.0f, 1.0f, 1.0f);
+    glm::vec3 lightPos(2.0f, 1.5f, 1.0f);
 
     shader->setVec3("objectColour", 1.0f, 1.0f, 1.0f);
     shader->setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
+    shader->setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
     shader->setFloat("ambientStrength", 0.3f);
-    shader->setFloat("specularStrength", 0.5f);
+    shader->setFloat("diffuseStrength", 1.0f);
+    shader->setFloat("specularStrength", 0.0f);
 
     lightShader.use();
+    lightShader.setVec3("colour", lightColour.x, lightColour.y, lightColour.z);
 
-    Shader coolShader("vertexShader.vert", "shaderSingleColour.frag", core::Path.shaders);
 
     // framebuffer configuration
     // -------------------------
@@ -239,8 +229,12 @@ int main() {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glBindRenderbuffer(GL_RENDERBUFFER, 0);
 
-    unsigned int *tex;
-    core::generateTexture(tex, "container.jpg", false);
+    //unsigned int *tex;
+    //core::generateTexture(tex, "container.jpg", false);
+
+    float exposure = 0.0f;
+    shader->use();
+    shader->setFloat("exposure", exposure);
 
     while (!core::shouldClose()) {
         float currentFrame = glfwGetTime();
@@ -256,37 +250,12 @@ int main() {
         glEnable(GL_DEPTH_TEST); // enable depth testing (is disabled for rendering screen-space quad)
         glViewport(0, 0, core::Data.SCR_WIDTH, core::Data.SCR_HEIGHT); // Have to tell framebuffer to use this each time
 
-        core::prerender(0.1, 0.1, 0.1);
-
-        shader->use();
-        model->bind();
-        core::makeModel(*shader);
-        model->draw(glm::vec3(0.0, 0.0, 0.0), *shader);
-
-//        // Creates the model matrix by translating by coordinates
-//        glm::mat4 modelMat = glm::mat4(1.0f);
-//        modelMat = glm::mat4 {
-//                1, 0, 0, 0,
-//                0, 1, 0, 0,
-//                0, 0, 1, 0,
-//                0, 0, 0, 1
-//        };
-//
-////        model = glm::translate(model, glm::vec3(0.0, 1.0, 0.0));
-//        int modelLoc = glGetUniformLocation(shader->ID, "model");
-//
-//        // Sets the relative shader3d uniform
-//        glUniformMatrix4fv(modelLoc, 1, GL_TRUE, glm::value_ptr(modelMat));
-//
-//
-//        // Draws the model
-//        glDrawArrays(GL_TRIANGLES, 0, 36);
+        core::drawScene(shader, lightShader, model, light, lightPos, cardboard);
 
         // now bind back to default framebuffer and draw a quad plane with the attached framebuffer color texture
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
-        glDisable(GL_DEPTH_TEST); // disable depth test so screen-space quad isn't discarded due to depth test.
+//        glDisable(GL_DEPTH_TEST); // disable depth test so screen-space quad isn't discarded due to depth test.
 
-        core::prerender(0.1, 0.1, 0.1);
 
         model2d->bind();
         glActiveTexture(GL_TEXTURE0);
@@ -298,15 +267,16 @@ int main() {
         unsigned char pixel[4];
         glReadPixels(0, 0, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, pixel);
         int average = (pixel[0] + pixel[1] + pixel[2]) / 3;
-        std::cout << "Average brightness:  " << average << std::endl;
-
-
-        core::prerender(0.1, 0.1, 0.1);
-
+        float exposureDiff = average * 11.0 / 126.0 - 1;
+        exposure = exposure * 0.95 + exposureDiff * 0.05;
+        if(exposure < -1) exposure = -1;
+        if(exposure > 10) exposure = 10;
+        std::cout << "Exposure:  " << exposure << std::endl;
         shader->use();
-        model->bind();
-        core::makeModel(*shader);
-        model->draw(glm::vec3(0.0, 0.0, 0.0), *shader);
+        shader->setFloat("exposure", exposure);
+
+
+        core::drawScene(shader, lightShader, model, light, lightPos, cardboard);
 
         core::glCheckError();
         glfwPollEvents();

@@ -4,12 +4,17 @@ out vec4 FragColor;
 in vec3 Normal;
 in vec3 FragPos;
 in vec3 LightPos;
+in vec2 TexCoords;
 
 uniform float ambientStrength;
+uniform float diffuseStrength;
 uniform float specularStrength;
 uniform vec3 objectColour;
 uniform vec3 lightColour;
 uniform vec3 viewPos;
+uniform float exposure;
+
+uniform sampler2D utexture;
 
 vec4 average(in vec4 a, in vec4 b)
 {
@@ -23,7 +28,7 @@ void main()
     vec3 lightDir = normalize(LightPos - FragPos);
 
     float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = diff * lightColour;
+    vec3 diffuse = diffuseStrength * diff * lightColour;
 
     // Ambient
     vec3 ambient = ambientStrength * lightColour;
@@ -35,6 +40,5 @@ void main()
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
     vec3 specular = specularStrength * spec * lightColour;
 
-    FragColor = vec4((ambient + diffuse + specular) * objectColour, 1.0f);
-    //FragColor = vec4(vec3(pow(gl_FragCoord.z, 10)), 1.0f);
+    FragColor = vec4((ambient + diffuse + specular - vec3(exposure) * 0.5) * objectColour, 1.0) * texture(utexture, TexCoords);
 }
