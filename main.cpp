@@ -179,7 +179,7 @@ glm::vec3 multiply(glm::vec3 vector, int i) {
 }
 
 int main() {
-    core::preInit(1920, 1080, "Lighting");
+    core::preInit(1920, 1080, "Stuff");
     core::init(true);
 
 //    unsigned int cardboard;
@@ -210,100 +210,30 @@ int main() {
 
         core::processInput(deltaTime);
 
-        float colour = sin(currentFrame/10);
-        if(colour < 0.5f && colour > -0.5f) {
-            core::prerender(1.0f * colour, 0.4f * colour, 0.4f * colour);
-        } else if(colour >= 0.5f){
-            core::prerender(0.4f * colour, 0.4f * colour, 1.0f * colour);
-        } else {
-            core::prerender(colour, colour, colour);
-        }
-
-        coolShader.use();
-        core::makeModel(coolShader);
+        core::prerender(1, 1, 1);
 
         shader->use();
-        glm::vec3 camera = core::Data.camera->cameraPos;
-
-        shader->setVec3("viewPos", camera.x, camera.y, camera.z);
-
-
-        core::glCheckError();
         model->bind();
         core::makeModel(*shader);
-
-        glm::vec3 lightPos(2.0f * sin(currentFrame), 1.5f * cos(currentFrame), 1.0f);
-        shader->setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
-
-        core::drawScene(*shader, coolShader, model, lightColour, glm::vec3(0));
-
-        stencil::enable();
-
-        // ---------------- FIRST PORTAL --------------------
-        // 1) Creating the portal
-        stencil::startTrace(1);
-        glm::vec3 portalLoc(-4.0f, 0.0f, 0.0f);
-        glm::vec3 portalDes(4.0f, 0.0f, 0.0f);
-        glm::vec3 offset = portalLoc - portalDes;
-        core::portalAtLoc(portalLoc, model, coolShader);
-
-        // 2) Creating the Contents
-        stencil::startDraw(1);
-        core::drawScene(*shader, coolShader, model, lightColour, offset);
-
-        // 3) Arrival Test
-        Camera* cam = core::Data.camera;
-        if(cam->cameraPos.x > portalLoc.x - 1.0 && cam->cameraPos.x < portalLoc.x) {
-        if(cam->cameraPos.y > portalLoc.y - 0.5 && cam->cameraPos.y < portalLoc.y + 0.5) {
-        if(cam->cameraPos.z > portalLoc.z - 0.5 && cam->cameraPos.z < portalLoc.z + 0.5)
-        {
-            core::makeModel(coolShader);
-            cam->moveBy(X, 8.0f);
-        }}}
-
-
-        // ---------------- SECOND PORTAL --------------------
-        // 1) Creating the portal
-        stencil::startTrace(2);
-        coolShader.use();
-
-        glm::vec3 portal2Loc(4.0f, 0.0f, 0.0f);
-        glm::vec3 portal2Des(-4.0f, 0.0f, 0.0f);
-        glm::vec3 offset2 = portal2Loc - portal2Des;
-        core::portalAtLoc(portal2Loc, model, coolShader);
-
-        // 2) Creating the Contents
-        stencil::startDraw(2);
-        core::drawScene(*shader, coolShader, model, lightColour, offset2);
-
-        // 3) Arrival Test
-        if(cam->cameraPos.x > portal2Loc.x && cam->cameraPos.x < portal2Loc.x + 1.0) {
-        if(cam->cameraPos.y > portal2Loc.y - 0.5 && cam->cameraPos.y < portal2Loc.y + 0.5) {
-        if(cam->cameraPos.z > portal2Loc.z - 0.5 && cam->cameraPos.z < portal2Loc.z + 0.5)
-        {
-            cam->moveBy(X, -8.0f);
-            core::makeModel(coolShader);
-        }}}
-
-
-        stencil::disable();
+//        model->draw(glm::vec3(0.0, 0.0, 0.0), *shader);
 
         // Creates the model matrix by translating by coordinates
         glm::mat4 model = glm::mat4(1.0f);
-        int modelLoc = glGetUniformLocation(lightShader.ID, "model");
+        model = glm::mat4 {
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+        };
+
+//        model = glm::translate(model, glm::vec3(0.0, 1.0, 0.0));
+        int modelLoc = glGetUniformLocation(shader->ID, "model");
 
         // Sets the relative shader3d uniform
-        lightShader.use();
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+        glUniformMatrix4fv(modelLoc, 1, GL_TRUE, glm::value_ptr(model));
 
-        core::makeModel(lightShader);
-        lightShader.use();
-        lightShader.setVec3("colour", lightColour.x, lightColour.y, lightColour.z);
-        light.bind();
-        light.draw(lightPos, lightShader);
-
-        lightShader.setVec3("colour", 1.0f, 0.0f, 1.0f);
-        light.draw(glm::vec3(0, 100, 0), lightShader);
+        // Draws the model
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
         core::glCheckError();
         glfwPollEvents();
