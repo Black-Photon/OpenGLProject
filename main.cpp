@@ -205,8 +205,6 @@ int main() {
 
     Shader coolShader("vertexShader.vert", "shaderSingleColour.frag", core::Path.shaders);
 
-
-
     // framebuffer configuration
     // -------------------------
     unsigned int framebuffer;
@@ -217,8 +215,15 @@ int main() {
     glGenTextures(1, &textureColorbuffer);
     glBindTexture(GL_TEXTURE_2D, textureColorbuffer);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, core::Data.SCR_WIDTH, core::Data.SCR_HEIGHT, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    int w = core::Data.SCR_WIDTH;
+    int h = core::Data.SCR_HEIGHT;
+    for(int i = 0; i < 10; i++, w/=2, h/=2)
+        glTexImage2D(GL_TEXTURE_2D, i, GL_RGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureColorbuffer, 0);
     // create a renderbuffer object for depth and stencil attachment (we won't be sampling these)
     unsigned int rbo;
@@ -247,7 +252,7 @@ int main() {
         // render
         // ------
         // bind to framebuffer and draw scene as we normally would to color texture
-        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, framebuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
         glEnable(GL_DEPTH_TEST); // enable depth testing (is disabled for rendering screen-space quad)
         glViewport(0, 0, core::Data.SCR_WIDTH, core::Data.SCR_HEIGHT); // Have to tell framebuffer to use this each time
 
@@ -256,26 +261,26 @@ int main() {
         shader->use();
         model->bind();
         core::makeModel(*shader);
-//        model->draw(glm::vec3(0.0, 0.0, 0.0), *shader);
+        model->draw(glm::vec3(0.0, 0.0, 0.0), *shader);
 
-        // Creates the model matrix by translating by coordinates
-        glm::mat4 modelMat = glm::mat4(1.0f);
-        modelMat = glm::mat4 {
-                1, 0, 0, 0,
-                0, 1, 0, 0,
-                0, 0, 1, 0,
-                0, 0, 0, 1
-        };
-
-//        model = glm::translate(model, glm::vec3(0.0, 1.0, 0.0));
-        int modelLoc = glGetUniformLocation(shader->ID, "model");
-
-        // Sets the relative shader3d uniform
-        glUniformMatrix4fv(modelLoc, 1, GL_TRUE, glm::value_ptr(modelMat));
-
-
-        // Draws the model
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+//        // Creates the model matrix by translating by coordinates
+//        glm::mat4 modelMat = glm::mat4(1.0f);
+//        modelMat = glm::mat4 {
+//                1, 0, 0, 0,
+//                0, 1, 0, 0,
+//                0, 0, 1, 0,
+//                0, 0, 0, 1
+//        };
+//
+////        model = glm::translate(model, glm::vec3(0.0, 1.0, 0.0));
+//        int modelLoc = glGetUniformLocation(shader->ID, "model");
+//
+//        // Sets the relative shader3d uniform
+//        glUniformMatrix4fv(modelLoc, 1, GL_TRUE, glm::value_ptr(modelMat));
+//
+//
+//        // Draws the model
+//        glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // now bind back to default framebuffer and draw a quad plane with the attached framebuffer color texture
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -286,13 +291,22 @@ int main() {
         model2d->bind();
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textureColorbuffer);
-
-//        glBindTexture(GL_TEXTURE_2D, *tex);
+        glGenerateMipmap(GL_TEXTURE_2D);
 
         model2d->draw(glm::vec2(0.0f, 0.0f), glm::vec2(core::Data.SCR_WIDTH, core::Data.SCR_HEIGHT), glm::vec2(core::Data.SCR_WIDTH, core::Data.SCR_HEIGHT), *shader2d);
 
-//        glDrawArrays(GL_TRIANGLES, 0, 36);
+        unsigned char pixel[4];
+        glReadPixels(0, 0, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, pixel);
+        int average = (pixel[0] + pixel[1] + pixel[2]) / 3;
+        std::cout << "Average brightness:  " << average << std::endl;
 
+
+        core::prerender(0.1, 0.1, 0.1);
+
+        shader->use();
+        model->bind();
+        core::makeModel(*shader);
+        model->draw(glm::vec3(0.0, 0.0, 0.0), *shader);
 
         core::glCheckError();
         glfwPollEvents();
