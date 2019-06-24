@@ -190,7 +190,9 @@ int main() {
     Shader lightShader("light.vert", "light.frag", core::Path.shaders);
 
     Shader *shader = core::Data.shader3d;
+    Shader *shader2d = core::Data.shader2d;
     Model *model = core::Data.models.at(0);
+    Model *model2d = core::Data.models.at(1);
 
     glm::vec3 lightColour(1.0f, 0.5f, 0.8f);
 
@@ -203,6 +205,38 @@ int main() {
 
     Shader coolShader("vertexShader.vert", "shaderSingleColour.frag", core::Path.shaders);
 
+
+
+    // framebuffer configuration
+    // -------------------------
+    unsigned int framebuffer;
+    glGenFramebuffers(1, &framebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+    // create a color attachment texture
+    unsigned int textureColorbuffer;
+    glGenTextures(1, &textureColorbuffer);
+    glBindTexture(GL_TEXTURE_2D, textureColorbuffer);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, core::Data.SCR_WIDTH, core::Data.SCR_HEIGHT, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureColorbuffer, 0);
+    // create a renderbuffer object for depth and stencil attachment (we won't be sampling these)
+    unsigned int rbo;
+    glGenRenderbuffers(1, &rbo);
+    glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, core::Data.SCR_WIDTH, core::Data.SCR_HEIGHT); // use a single renderbuffer object for both a depth AND stencil buffer.
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo); // now actually attach it
+    // now that we actually created the framebuffer and added all attachments we want to check if it is actually complete now
+    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+        std::cerr << "ERROR::FRAMEBUFFER::GENERATION_FAILURE" << std::endl;
+    else
+        std::cout << "INFO::FRAMEBUFFER::GENERATION_SUCCESS" << std::endl;
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glBindRenderbuffer(GL_RENDERBUFFER, 0);
+
+    unsigned int *tex;
+    core::generateTexture(tex, "container.jpg", false);
+
     while (!core::shouldClose()) {
         float currentFrame = glfwGetTime();
         float deltaTime = currentFrame - core::Data.lastFrame;
@@ -210,7 +244,14 @@ int main() {
 
         core::processInput(deltaTime);
 
-        core::prerender(1, 1, 1);
+        // render
+        // ------
+        // bind to framebuffer and draw scene as we normally would to color texture
+        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, framebuffer);
+        glEnable(GL_DEPTH_TEST); // enable depth testing (is disabled for rendering screen-space quad)
+        glViewport(0, 0, core::Data.SCR_WIDTH, core::Data.SCR_HEIGHT); // Have to tell framebuffer to use this each time
+
+        core::prerender(0.1, 0.1, 0.1);
 
         shader->use();
         model->bind();
@@ -218,8 +259,8 @@ int main() {
 //        model->draw(glm::vec3(0.0, 0.0, 0.0), *shader);
 
         // Creates the model matrix by translating by coordinates
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::mat4 {
+        glm::mat4 modelMat = glm::mat4(1.0f);
+        modelMat = glm::mat4 {
                 1, 0, 0, 0,
                 0, 1, 0, 0,
                 0, 0, 1, 0,
@@ -230,10 +271,28 @@ int main() {
         int modelLoc = glGetUniformLocation(shader->ID, "model");
 
         // Sets the relative shader3d uniform
-        glUniformMatrix4fv(modelLoc, 1, GL_TRUE, glm::value_ptr(model));
+        glUniformMatrix4fv(modelLoc, 1, GL_TRUE, glm::value_ptr(modelMat));
+
 
         // Draws the model
         glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        // now bind back to default framebuffer and draw a quad plane with the attached framebuffer color texture
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glDisable(GL_DEPTH_TEST); // disable depth test so screen-space quad isn't discarded due to depth test.
+
+        core::prerender(0.1, 0.1, 0.1);
+
+        model2d->bind();
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, textureColorbuffer);
+
+//        glBindTexture(GL_TEXTURE_2D, *tex);
+
+        model2d->draw(glm::vec2(0.0f, 0.0f), glm::vec2(core::Data.SCR_WIDTH, core::Data.SCR_HEIGHT), glm::vec2(core::Data.SCR_WIDTH, core::Data.SCR_HEIGHT), *shader2d);
+
+//        glDrawArrays(GL_TRIANGLES, 0, 36);
+
 
         core::glCheckError();
         glfwPollEvents();
@@ -262,6 +321,8 @@ int main() {
             core::Data.camera->moveOnPlane(BACKWARD, Z, deltaTime);
         }
     }
+    glDeleteFramebuffers(1, &framebuffer);
+
     core::close();
 }
 
