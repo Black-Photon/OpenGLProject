@@ -117,29 +117,60 @@ namespace core {
         glfwTerminate();
     }
 
-    void drawScene(Shader shader, Shader coolShader, Model* model, glm::vec3 lightColour, glm::vec3 offset) {
-//        coolShader.use();
-//        model->draw(glm::vec3(0.0f, 0.0f, 0.0f)+offset, coolShader);
+    void drawScene(Shader* shader, Shader* lightShader, Shader* solidShader, Model* model, glm::vec3 lightPos, bool renderlight) {
+        core::prerender(0.1, 0.1, 0.1);
 
-        shader.use();
-        shader.setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
+        model->bind();
+        lightShader->use();
+//        core::makeModel(*lightShader);
+        if(renderlight) model->draw(lightPos, *lightShader);
 
-        for(int f = -4; f < 8; f += 8) {
-            model->draw(glm::vec3(f, -1.0f, 0.0f)+offset, shader);
-            model->draw(glm::vec3(f, 1.0f, 0.0f)+offset, shader);
-            model->draw(glm::vec3(f, -1.0f, -1.0f)+offset, shader);
-            model->draw(glm::vec3(f, 1.0f, -1.0f)+offset, shader);
-            model->draw(glm::vec3(f, -1.0f, 1.0f)+offset, shader);
-            model->draw(glm::vec3(f, 1.0f, 1.0f)+offset, shader);
-            model->draw(glm::vec3(f, 0.0f, -1.0f)+offset, shader);
-            model->draw(glm::vec3(f, 0.0f, 1.0f)+offset, shader);
-            shader.setVec3("lightColour", 0.3, 1, 0.1);
-        }
+        shader->use();
+//        core::makeModel(*shader);
 
-//        shader.setVec3("lightColour", 1.0, 0.3, 0.3);
-//        model->draw(offset, shader);
+        // Creates the model matrix by translating by coordinates
+        glm::mat4 modelMat = glm::mat4 {
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+        };
 
-        shader.setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
+        int modelLoc = glGetUniformLocation(shader->ID, "model");
+
+        // Sets the relative shader3d uniform
+        glUniformMatrix4fv(modelLoc, 1, GL_TRUE, glm::value_ptr(modelMat));
+
+        // Draws the model
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        solidShader->use();
+//        core::makeModel(*solidShader);
+
+        modelMat = glm::mat4 {
+                1, 0, 0, 0,
+                0, 0, -1, 0,
+                0, 1, 0, 0,
+                0, 0, 0, 1
+        } * glm::mat4 {
+                32, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 32, 0,
+                0, 0, 0, 1
+        } * glm::mat4 {
+                1, 0, 0, 0,
+                0, 1, 0, -1.5,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+        };
+
+        modelLoc = glGetUniformLocation(solidShader->ID, "model");
+
+        // Sets the relative shader3d uniform
+        glUniformMatrix4fv(modelLoc, 1, GL_TRUE, glm::value_ptr(modelMat));
+
+        // Draws the model
+        glDrawArrays(GL_TRIANGLES, 0, 6);
     }
 
     void portalAtLoc(glm::vec3 position, Model* model, Shader coolShader) {
@@ -182,26 +213,72 @@ int main() {
     core::preInit(1920, 1080, "Stuff");
     core::init(true);
 
-//    unsigned int cardboard;
-//    core::generateTexture(&cardboard, std::string("container.jpg"), false);
+    unsigned int cardboard;
+    core::generateTexture(&cardboard, std::string("container.jpg"), false);
 
     LightModel light;
+    SquareModel square;
 
     Shader lightShader("light.vert", "light.frag", core::Path.shaders);
+    Shader simpleDepthShader("simpleDepthShader.vert", "simpleDepthShader.frag", core::Path.shaders);
+    Shader depthShader("depthShader.vert", "depthShader.frag", core::Path.shaders);
 
     Shader *shader = core::Data.shader3d;
+    Shader *shader2d = core::Data.shader2d;
     Model *model = core::Data.models.at(0);
 
-    glm::vec3 lightColour(1.0f, 0.5f, 0.8f);
+    glm::vec3 lightColour(1.0f, 1.0f, 1.0f);
+    glm::vec3 lightPos(1.0f, 1.5f, 2.0f);
 
+    shader->use();
     shader->setVec3("objectColour", 1.0f, 1.0f, 1.0f);
-    shader->setVec3("lightColour", lightColour.x, lightColour.y, lightColour.z);
+    shader->setVec3("lightColour", lightColour);
+    shader->setVec3("lightPos", lightPos);
     shader->setFloat("ambientStrength", 0.3f);
+    shader->setFloat("diffuseStrength", 1.0f);
     shader->setFloat("specularStrength", 0.5f);
 
     lightShader.use();
+    lightShader.setVec3("colour", lightColour);
 
-    Shader coolShader("vertexShader.vert", "shaderSingleColour.frag", core::Path.shaders);
+    Shader solidShader("vertexShader.vert", "shaderSingleColour.frag", core::Path.shaders);
+    solidShader.use();
+    solidShader.setInt("alpha", 1);
+    solidShader.setVec3("lightPos", lightPos);
+
+    unsigned int depthMapFBO;
+    glGenFramebuffers(1, &depthMapFBO);
+    const unsigned int SHADOW_WIDTH = 4096, SHADOW_HEIGHT = 4096;
+
+    unsigned int depthMap;
+    glGenTextures(1, &depthMap);
+    glBindTexture(GL_TEXTURE_2D, depthMap);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT,
+                 SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+
+
+    // shader configuration
+    // --------------------
+    shader->use();
+    shader->setInt("diffuseTexture", 0);
+    shader->setInt("shadowMap", 1);
+    solidShader.use();
+    solidShader.setInt("diffuseTexture", 0);
+    solidShader.setInt("shadowMap", 1);
+    depthShader.use();
+    depthShader.setInt("depthMap", 0);
+
 
     while (!core::shouldClose()) {
         float currentFrame = glfwGetTime();
@@ -210,30 +287,64 @@ int main() {
 
         core::processInput(deltaTime);
 
-        core::prerender(1, 1, 1);
-
         shader->use();
-        model->bind();
-        core::makeModel(*shader);
-//        model->draw(glm::vec3(0.0, 0.0, 0.0), *shader);
+        shader->setVec3("viewPos", core::Data.camera->cameraPos);
 
-        // Creates the model matrix by translating by coordinates
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::mat4 {
-                1, 0, 0, 0,
-                0, 1, 0, 0,
-                0, 0, 1, 0,
-                0, 0, 0, 1
-        };
+//        core::drawScene(shader, &lightShader, &solidShader, model, lightPos);
 
-//        model = glm::translate(model, glm::vec3(0.0, 1.0, 0.0));
-        int modelLoc = glGetUniformLocation(shader->ID, "model");
+
+        float near_plane = 0.1f, far_plane = 10.0f;
+//        glm::mat4 lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
+        glm::mat4 lightProjection = glm::perspective(glm::radians(90.0f), ((float) SHADOW_WIDTH)/ ((float) SHADOW_HEIGHT), near_plane, far_plane);
+        glm::mat4 lightView = glm::lookAt(      lightPos,
+                                                glm::vec3(0.0f),
+                                                glm::vec3(0.0f, 1.0f, 0.0f));
+        glm::mat4 lightSpaceMatrix = lightProjection * lightView;
+
+        simpleDepthShader.use();
+        int matLoc = glGetUniformLocation(simpleDepthShader.ID, "lightSpaceMatrix");
 
         // Sets the relative shader3d uniform
-        glUniformMatrix4fv(modelLoc, 1, GL_TRUE, glm::value_ptr(model));
+        glUniformMatrix4fv(matLoc, 1, GL_FALSE, glm::value_ptr(lightSpaceMatrix));
 
-        // Draws the model
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        // 1. first render to depth map
+        glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+        glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+        glClear(GL_DEPTH_BUFFER_BIT);
+        glBindTexture(GL_TEXTURE_2D, cardboard);
+        core::drawScene(&simpleDepthShader, &simpleDepthShader, &simpleDepthShader, model, lightPos, false);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        // 2. then render scene as normal with shadow mapping (using depth map)
+        glViewport(0, 0, core::Data.SCR_WIDTH, core::Data.SCR_HEIGHT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, cardboard);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, depthMap);
+
+        shader->use();
+        matLoc = glGetUniformLocation(shader->ID, "lightSpaceMatrix");
+        glUniformMatrix4fv(matLoc, 1, GL_FALSE, glm::value_ptr(lightSpaceMatrix));
+
+        solidShader.use();
+        matLoc = glGetUniformLocation(solidShader.ID, "lightSpaceMatrix");
+        glUniformMatrix4fv(matLoc, 1, GL_FALSE, glm::value_ptr(lightSpaceMatrix));
+
+        core::makeModel(*shader);
+        core::makeModel(lightShader);
+        core::makeModel(solidShader);
+        core::drawScene(shader, &lightShader, &solidShader, model, lightPos, true);
+
+        // render Depth map to quad for visual debugging
+        // ---------------------------------------------
+//        depthShader.use();
+//        depthShader.setFloat("near_plane", near_plane);
+//        depthShader.setFloat("far_plane", far_plane);
+//        glActiveTexture(GL_TEXTURE0);
+//        glBindTexture(GL_TEXTURE_2D, depthMap);
+//        square.bind();
+//        square.draw(glm::vec2(0.0f), glm::vec2(core::Data.SCR_WIDTH, core::Data.SCR_HEIGHT), glm::vec2(core::Data.SCR_WIDTH, core::Data.SCR_HEIGHT), depthShader);
+
 
         core::glCheckError();
         glfwPollEvents();

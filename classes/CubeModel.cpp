@@ -1,20 +1,27 @@
 #include "CubeModel.h"
 
-CubeModel::CubeModel() : Model((float*) vertices, 216)
+CubeModel::CubeModel() : Model((float*) vertices, 288)
 {
     // Position
     // Tells OpenGL how to interpret the vertex buffer data
     // Index, Size, Type, Normalized, Stride, Pointer
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *) 0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *) 0);
     // Enables a generic vertex attribute at the given index
     glEnableVertexAttribArray(0);
 
     // Location
     // Tells OpenGL how to interpret the vertex buffer data
     // Index, Size, Type, Normalized, Stride, Pointer
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *) (3 * sizeof(float)));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *) (3 * sizeof(float)));
     // Enables a generic vertex attribute at the given index
     glEnableVertexAttribArray(1);
+
+    // Texture
+    // Tells OpenGL how to interpret the vertex buffer data
+    // Index, Size, Type, Normalized, Stride, Pointer
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *) (6 * sizeof(float)));
+    // Enables a generic vertex attribute at the given index
+    glEnableVertexAttribArray(2);
 
     // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
     // Unbinds the buffer

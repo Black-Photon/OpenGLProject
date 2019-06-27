@@ -47,9 +47,18 @@ public:
     /**
      * Sets a vector 3 uniform to the given value
      * @param name Variable name
-     * @param value Float value
+     * @param v1 First Value
+     * @param v2 Second Value
+     * @param v3 Third Value
      */
     void setVec3(const std::string &name, float v1, float v2, float v3) const;
+
+    /**
+     * Sets a vector 3 uniform to the given value
+     * @param name Variable name
+     * @param vec Vector Value
+     */
+    void setVec3(const std::string &name, glm::vec3 vec) const;
 
 private:
     /**

@@ -2,19 +2,19 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "SquareModel.h"
 
-SquareModel::SquareModel() : Model((float*) sq_vertices, 30)
+SquareModel::SquareModel() : Model((float*) sq_vertices, 24)
 {
     // Position
     // Tells OpenGL how to interpret the vertex buffer data
     // Index, Size, Type, Normalized, Stride, Pointer
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *) 0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *) 0);
     // Enables a generic vertex attribute at the given index
     glEnableVertexAttribArray(0);
 
     // Location
     // Tells OpenGL how to interpret the vertex buffer data
     // Index, Size, Type, Normalized, Stride, Pointer
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *) (3 * sizeof(float)));
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *) (2 * sizeof(float)));
     // Enables a generic vertex attribute at the given index
     glEnableVertexAttribArray(1);
 
