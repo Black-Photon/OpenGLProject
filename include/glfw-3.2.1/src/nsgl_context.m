@@ -147,7 +147,7 @@ GLFWbool _glfwCreateContextNSGL(_GLFWwindow* window,
         if (ctxconfig->profile != GLFW_OPENGL_CORE_PROFILE)
         {
             _glfwInputError(GLFW_VERSION_UNAVAILABLE,
-                            "NSGL: The targeted version of OS X only supports core profile contexts for OpenGL 3.2 and above");
+                            "NSGL: The targeted version of OS X only supports core.hpp profile contexts for OpenGL 3.2 and above");
             return GLFW_FALSE;
         }
     }

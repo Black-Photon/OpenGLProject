@@ -22,7 +22,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <glad/glad.h>
+#include <glad.h>
 
 static void* get_proc(const char *namez);
 
@@ -74,6 +74,8 @@ void close_gl(void) {
 }
 #else
 #include <dlfcn.h>
+#include <glad.h>
+
 static void* libGL;
 
 #if !defined(__APPLE__) && !defined(__HAIKU__)

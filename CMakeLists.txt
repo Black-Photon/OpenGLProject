@@ -3,34 +3,39 @@ project(OpenGLProject)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# GLaDOS
+# Project Files
+add_executable(
+        OpenGLProject
 
-include_directories(include)
+        src/main.cpp
 
-add_executable(OpenGLProject
-        ./main.cpp
+        # Library Includes
         src/glad.c
         include/glad/glad.h
         include/stb_image.h
-        classes/Shader.cpp classes/Camera.cpp classes/CubeModel.cpp classes/SquareModel.cpp classes/Model.cpp classes/LightModel.cpp)
+        )
 
-# GLFW
+# GLFW / GLAD
+add_subdirectory("include/glfw-3.2.1/")
+include_directories(include)
+include_directories(include/glfw-3.2.1/deps)
+include_directories(include/glad)
 
-set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+# Assimp
+if(WIN32)
+        include_directories(include/win32)
+        include_directories(include/win32/assimp)
+endif()
+if(UNIX)
+        add_subdirectory(include/assimp)
+        include_directories(include/assimp/include include/assimp/build/include)
+endif()
+set(BUILD_ASSIMP_TOOLS  ON)
+set(ASSIMP_BUILD_STATIC_LIB ON)
 
-#add_subdirectory("/home/joseph/CLionProjects/OpenGLProject/include/glfw-3.2.1/")
-#add_subdirectory("/run/media/u1800015/USB-ALPHA/C++/OpenGLProject/include/glfw-3.2.1/")
-add_subdirectory("/home/joseph/Documents/Programming/Graphics/OpenGLTest/include/glfw-3.2.1/")
-target_link_libraries(OpenGLProject glfw)
-
-
-# OpenGL Stuff - Probably not necessary
-
-#find_package(OpenGL REQUIRED)
-#if(OPENGL_FOUND)
-#    include_directories(${OPENGL_INCLUDE_DIR})
-#    target_link_libraries(OpenGLProject ${OPENGL_gl_LIBRARY})
-#endif()
-#
+# Link all
+if(WIN32)
+        add_library( assimp STATIC IMPORTED src/core/PhysicsComponent.cpp src/core/headers/PhysicsComponent.h)
+        set_target_properties( assimp PROPERTIES IMPORTED_LOCATION "C:/Program Files/Assimp/lib/x64/assimp-vc140-mt.lib" )
+endif()
+target_link_libraries(OpenGLProject glfw assimp)

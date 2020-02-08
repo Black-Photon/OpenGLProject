@@ -1,5 +1,5 @@
 //========================================================================
-// Heightmap example program using OpenGL 3 core profile
+// Heightmap example program using OpenGL 3 core.hpp profile
 // Copyright (c) 2010 Olivier Delannoy
 //
 // This software is provided 'as-is', without any express or implied
