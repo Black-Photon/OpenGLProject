@@ -32,17 +32,6 @@
 // -------------------- MODULE FILES --------------------
 
 #include "core/core.hpp"
+#include "lightning-borders/lightning-borders.hpp"
 
 // ----------- ALL PROJECT INCLUDES BELOW HERE -----------
-
-// Include Class Headers
-#include "Lightning-Borders/Lightning.h"
-#include "Lightning-Borders/Renderer.h"
-
-// Include Helper Headers
-
-// Include Class Files
-#include "Lightning-Borders/Lightning.cpp"
-#include "Lightning-Borders/Renderer.cpp"
-
-// Include Helper Files

@@ -70,7 +70,7 @@ void Scene::replaceShader(Shader &newShader, Shader &oldShader) {
     }
 }
 
-void Scene::drawScene(bool drawRoom, float size) {
+void Scene::drawScene(float size) {
     for(const auto pair : instances) {
         auto shader = shaders.at(pair.first);
         auto instanceList = pair.second;
@@ -84,12 +84,12 @@ void Scene::drawScene(bool drawRoom, float size) {
         for(auto instance : instanceList) {
             Transformation sizedTrans = instance->transformation;
             sizedTrans.size *= size;
-            if(drawRoom || !instance->inside) instance->draw(shader, sizedTrans);
+            instance->draw(shader, sizedTrans);
         }
     }
 }
 
-void Scene::drawScene(bool drawRoom) {
+void Scene::drawScene() {
     for(const auto pair : instances) {
         auto shader = shaders.at(pair.first);
         auto instanceList = pair.second;
@@ -101,7 +101,7 @@ void Scene::drawScene(bool drawRoom) {
 
         core::makeModel(shader, *core::Data.camera);
         for(auto instance : instanceList) {
-            if(drawRoom || !instance->inside) instance->draw(shader);
+            instance->draw(shader);
         }
     }
 }

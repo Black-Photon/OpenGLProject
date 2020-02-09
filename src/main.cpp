@@ -10,7 +10,7 @@ namespace core {
         prerender(0.1, 0.1, 0.1);
 
         glm::vec3 pos(0, 0, 0);
-        scene.drawScene(false);
+        scene.drawScene();
 
         glCheckError();
         glfwPollEvents();
@@ -23,15 +23,17 @@ namespace core {
         logger::message("Pre-Initialisation Complete");
         init(true);
         logger::message("Initialisation Complete");
-        glCheckError();
 
         CubeModel cube;
         Shader shader("basic3d.vert", "solidColour.frag");
-        shader.setVec3("colour", 0.5, 0.5, 0.5);
+        shader.use();
+        shader.setVec4("colour", 0.5f, 0.5f, 0.5f, 1.0f);
 
         Instance cubeInstance(cube, shader, "cube");
         Scene scene;
         scene.addInstance(cubeInstance);
+
+        glCheckError();
 
         logger::message("Starting draw Phase");
         while (!shouldClose()) frame(scene);

@@ -56,7 +56,7 @@ public:
 protected:
     unsigned int VAO;
     unsigned int VBO;
-    Texture *texture;
+    Texture *texture = nullptr;
     std::vector<int> attributeSizes;
 
     /**

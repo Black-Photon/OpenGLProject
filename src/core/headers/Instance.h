@@ -10,7 +10,6 @@ public:
     std::string name;
     Shader shader;
     Transformation transformation;
-    bool inside = false;
 
 private:
     static long lastID;

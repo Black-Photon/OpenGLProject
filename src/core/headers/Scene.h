@@ -15,8 +15,8 @@ public:
 
     void replaceShader(Shader &newShader, Shader &oldShader);
 
-    void drawScene(bool drawRoom, float size);
-    void drawScene(bool drawRoom);
+    void drawScene(float size);
+    void drawScene();
 
     void addLight(std::string name, Light &light);
     bool removeLight(std::string name);
