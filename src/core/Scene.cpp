@@ -133,6 +133,15 @@ Instance& Scene::getInstance(std::string name) {
     throw sceneSearchException("Instance '" + name + "' could not be found");
 }
 
+Shader& Scene::getShader(std::string name) {
+    for(auto &shader : shaders) {
+        if(shader.name == name) {
+            return shader;
+        }
+    }
+    throw sceneSearchException("Shader '" + name + "' could not be found");
+}
+
 void Scene::update(float deltaT) {
     for(auto &pair : instances) {
         for(auto &instance : pair.second) {

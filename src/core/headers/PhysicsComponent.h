@@ -1,6 +1,7 @@
 #ifndef SPACIALFREEZE_PHYSICSCOMPONENT_H
 #define SPACIALFREEZE_PHYSICSCOMPONENT_H
 
+#include <string>
 
 class PhysicsComponent : public Component {
 public:

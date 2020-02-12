@@ -12,8 +12,7 @@ add_executable(
         # Library Includes
         src/glad.c
         include/glad/glad.h
-        include/stb_image.h
-        )
+        include/stb_image.h)
 
 # GLFW / GLAD
 add_subdirectory("include/glfw-3.2.1/")
@@ -35,7 +34,7 @@ set(ASSIMP_BUILD_STATIC_LIB ON)
 
 # Link all
 if(WIN32)
-        add_library( assimp STATIC IMPORTED src/core/PhysicsComponent.cpp src/core/headers/PhysicsComponent.h src/lightning-borders/lightning-borders.hpp)
+        add_library( assimp STATIC IMPORTED src/core/PhysicsComponent.cpp src/core/headers/PhysicsComponent.h src/lightning-borders/lightning-borders.hpp src/stencil/stencil.cpp src/stencil/stencil.h)
         set_target_properties( assimp PROPERTIES IMPORTED_LOCATION "C:/Program Files/Assimp/lib/x64/assimp-vc140-mt.lib" )
 endif()
 target_link_libraries(OpenGLProject glfw assimp)

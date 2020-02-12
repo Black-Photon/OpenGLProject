@@ -1,7 +1,7 @@
-Shader::Shader(std::string vertexPath, std::string fragmentPath) :
-    Shader(vertexPath, fragmentPath, "") {}
+Shader::Shader(std::string name, std::string vertexPath, std::string fragmentPath) :
+    Shader(name, vertexPath, fragmentPath, "") {}
 
-Shader::Shader(std::string vertexPath, std::string fragmentPath, std::string geometryPath)
+Shader::Shader(std::string name, std::string vertexPath, std::string fragmentPath, std::string geometryPath) : name(name)
 {
     if(geometryPath.empty()) usesGeometry = false;
 

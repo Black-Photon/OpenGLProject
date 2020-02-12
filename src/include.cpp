@@ -32,6 +32,7 @@
 // -------------------- MODULE FILES --------------------
 
 #include "core/core.hpp"
+#include "examples/examples.hpp"
 #include "lightning-borders/lightning-borders.hpp"
 
 // ----------- ALL PROJECT INCLUDES BELOW HERE -----------

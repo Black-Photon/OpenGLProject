@@ -11,7 +11,7 @@ namespace stencil {
 
     void startDrawInvert(int channel) {
         glDepthMask(GL_TRUE);
-        glStencilFunc(GL_NOTEQUAL, channel, 0xFF); // Only draw on stencil
+        glStencilFunc(GL_NOTEQUAL, channel, 0xFF); // Don't draw on stencil
     }
 
     void enable() {

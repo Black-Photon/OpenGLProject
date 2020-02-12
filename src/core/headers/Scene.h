@@ -22,6 +22,7 @@ public:
     bool removeLight(std::string name);
     Light& getLight(std::string name);
     Instance& getInstance(std::string name);
+    Shader& getShader(std::string name);
 
     void update(float deltaT);
 

@@ -28,6 +28,7 @@ void Instance::update(float deltaT) {
 void Instance::addComponent(string name, Component *component) {
     std::pair<string, Component*> pair(name, component);
     components.insert(pair);
+    component->setTransformation(&transformation);
 }
 
 Component* Instance::getComponent(std::string name) {

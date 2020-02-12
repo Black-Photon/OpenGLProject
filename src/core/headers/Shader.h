@@ -6,8 +6,9 @@
 class Shader
 {
 public:
-    // The program ID
+    // The program ID and name
     unsigned int ID;
+    std::string name;
 
     // Shader name
     std::string vertexName;
@@ -22,8 +23,8 @@ public:
      * @param fragmentPath Path to fragment shader relative to shaders
      * @param location Location of shaders path (Use Path.shaders)
      */
-    Shader(std::string vertexPath, std::string fragmentPath);
-    Shader(std::string vertexPath, std::string fragmentPath, std::string geometryPath);
+    Shader(std::string name, std::string vertexPath, std::string fragmentPath);
+    Shader(std::string name, std::string vertexPath, std::string fragmentPath, std::string geometryPath);
     /**
      * Activates the shader as the one being used to draw
      */

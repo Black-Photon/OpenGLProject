@@ -2,15 +2,14 @@
 #include "include.cpp"
 
 namespace core {
-    void frame(Scene &scene) {
+    void frame(Scene &scene, void draw(Scene &, float)) {
         float currentFrame = glfwGetTime();
         float deltaTime = currentFrame - Data.lastFrame;
         Data.lastFrame = currentFrame;
         processInput(deltaTime);
         prerender(0.1, 0.1, 0.1);
 
-        glm::vec3 pos(0, 0, 0);
-        scene.drawScene();
+        draw(scene, deltaTime);
 
         glCheckError();
         glfwPollEvents();
@@ -21,22 +20,28 @@ namespace core {
         logger::message("Starting Program");
         preInit(1920, 1080, "OpenGL Project");
         logger::message("Pre-Initialisation Complete");
-        init(true);
+        init(false);
         logger::message("Initialisation Complete");
 
         CubeModel cube;
-        Shader shader("basic3d.vert", "solidColour.frag");
-        shader.use();
-        shader.setVec4("colour", 0.5f, 0.5f, 0.5f, 1.0f);
+        Shader solidShader("solid", "basic3d.vert", "solidColour.frag");
+        Shader modelShader("model", "basic3d.vert", "model.frag");
+        Shader depthShader("depth", "depthShader.vert", "depthShader.frag");
+        Shader tex2dShader("tex2d", "basic2d.vert", "texture.frag");
 
-        Instance cubeInstance(cube, shader, "cube");
+        Instance cubeInstance(cube, solidShader, "cube");
+        PhysicsComponent phy;
+        cubeInstance.addComponent("physics", &phy);
         Scene scene;
         scene.addInstance(cubeInstance);
 
         glCheckError();
 
         logger::message("Starting draw Phase");
-        while (!shouldClose()) frame(scene);
+        while (!shouldClose()) {
+//            frame(scene, stencil_example);
+            frame(scene, lighting_example);
+        }
     }
 }
 
