@@ -2,14 +2,14 @@
 #include "include.cpp"
 
 namespace core {
-    void frame(Scene &scene, void draw(Scene &, float)) {
+    void frame(Scene &scene, Assignment &assignment, void draw(Scene &, Assignment &, float)) {
         float currentFrame = glfwGetTime();
         float deltaTime = currentFrame - Data.lastFrame;
         Data.lastFrame = currentFrame;
         processInput(deltaTime);
         prerender(0.1, 0.1, 0.1);
 
-        draw(scene, deltaTime);
+        draw(scene, assignment, deltaTime);
 
         glCheckError();
         glfwPollEvents();
@@ -33,14 +33,26 @@ namespace core {
         PhysicsComponent phy;
         cubeInstance.addComponent("physics", &phy);
         Scene scene;
-        scene.addInstance(cubeInstance);
+        scene.addInstance(cubeInstance, "model");
+
+        Assignment assignment;
+        Group g_model = assignment.createGroup("model");
+        assignment.setPair(g_model, modelShader);
+        Group g_solid = assignment.createGroup("solid");
+        assignment.setPair(g_model, solidShader);
+        Group g_depth = assignment.createGroup("depth");
+        assignment.setPair(g_model, depthShader);
+        Group g_tex2d = assignment.createGroup("tex2d");
+        assignment.setPair(g_model, tex2dShader);
+
+        scene.setAssignment(assignment);
 
         glCheckError();
 
         logger::message("Starting draw Phase");
         while (!shouldClose()) {
 //            frame(scene, stencil_example);
-            frame(scene, lighting_example);
+            frame(scene, assignment, lighting_example);
         }
     }
 }

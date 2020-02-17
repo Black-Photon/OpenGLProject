@@ -13,6 +13,8 @@
 #include "headers/CubeModel.h"
 #include "headers/Component.h"
 #include "headers/PhysicsComponent.h"
+#include "headers/Group.h"
+#include "headers/Assignment.h"
 
 // Helper headers
 #include "headers/frame.h"
@@ -41,6 +43,8 @@
 #include "CubeMesh.cpp"
 #include "CubeModel.cpp"
 #include "PhysicsComponent.cpp"
+#include "Group.cpp"
+#include "Assignment.cpp"
 
 // Helper files
 #include "preInit.cpp"

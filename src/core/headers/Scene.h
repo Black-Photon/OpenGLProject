@@ -2,29 +2,33 @@
 #define SPACIALFREEZE_SCENE_H
 
 #include "Instance.h"
+#include "Assignment.h"
 
 class Scene {
 private:
-    std::vector<Shader> shaders;
-    std::map<int, std::vector<Instance*>> instances;
+    Assignment assignment;
+    std::map<Instance, std::string> instances;
     std::map<std::string, Light> lights;
 
 public:
-    void addInstance(Instance &instance);
-    bool removeInstance(Instance &instance);
-
-    void replaceShader(Shader &newShader, Shader &oldShader);
-
     void drawScene(float size);
     void drawScene();
 
-    void addLight(std::string name, Light &light);
-    bool removeLight(std::string name);
-    Light& getLight(std::string name);
-    Instance& getInstance(std::string name);
-    Shader& getShader(std::string name);
-
     void update(float deltaT);
+
+    void addInstance(Instance &instance, std::string group);
+    Instance& getInstance(std::string name);
+    void removeInstance(Instance &instance);
+
+    void setGroup(Instance &instance, std::string group);
+    int getGroup(Instance &instance);
+
+    void addLight(std::string name, Light &light);
+    Light& getLight(std::string name);
+    void removeLight(std::string name);
+
+    void setAssignment(Assignment &a);
+    Assignment& getAssignment();
 
     /**
      * Indicated an error occurred in searching for a scene object

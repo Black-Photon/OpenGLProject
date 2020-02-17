@@ -1,79 +1,7 @@
-void Scene::addInstance(Instance &instance) {
-    Shader shader = instance.shader;
-    int pos;
-    bool found = false;
-    for(int i = 0; i < shaders.size(); i++) {
-        if(shaders.at(i).ID == shader.ID) {
-            found = true;
-            pos = i;
-            break;
-        }
-    }
-
-    if(!found) {
-        pos = shaders.size();
-        shaders.push_back(shader);
-    }
-
-    found = false;
-    for(auto& pair : instances) {
-        if(pair.first == pos) {
-            pair.second.push_back(&instance);
-            found = true;
-        }
-    }
-
-    if(!found) {
-        std::vector<Instance*> newInstances;
-        newInstances.push_back(&instance);
-        instances.insert(std::pair(pos, newInstances));
-    }
-}
-
-bool Scene::removeInstance(Instance &instance) {
-    Shader shader = instance.shader;
-    int pos;
-    bool found = false;
-    for(int i = 0; i < shaders.size(); i++) {
-        if(shaders.at(i).ID == shader.ID) {
-            found = true;
-            pos = i;
-            break;
-        }
-    }
-
-    if(!found) {
-        return false;
-    }
-
-    for(auto& pair : instances) {
-        if(pair.first == pos) {
-            for(int i = 0; i < pair.second.size(); i++) {
-                if(pair.second.at(i)->ID == instance.ID) {
-                    pair.second.erase(pair.second.begin() + i);
-                    
-                    return true;
-                }
-            }
-        }
-    }
-
-    return false;
-}
-
-void Scene::replaceShader(Shader &newShader, Shader &oldShader) {
-    for(auto & shader : shaders) {
-        if(shader.ID == oldShader.ID) {
-            shader = newShader;
-            break;
-        }
-    }
-}
-
 void Scene::drawScene(float size) {
     for(const auto pair : instances) {
-        auto shader = shaders.at(pair.first);
-        auto instanceList = pair.second;
+        auto shader = assignment.getShader(assignment.getGroup(pair.second));
+        auto instance = pair.first;
         shader.use();
 
         for(auto &pair : lights) {
@@ -81,18 +9,16 @@ void Scene::drawScene(float size) {
         }
 
         core::makeModel(shader, *core::Data.camera);
-        for(auto instance : instanceList) {
-            Transformation sizedTrans = instance->transformation;
-            sizedTrans.size *= size;
-            instance->draw(shader, sizedTrans);
-        }
+        Transformation sizedTrans = instance.transformation;
+        sizedTrans.size *= size;
+        instance.draw(shader, sizedTrans);
     }
 }
 
 void Scene::drawScene() {
     for(const auto pair : instances) {
-        auto shader = shaders.at(pair.first);
-        auto instanceList = pair.second;
+        auto shader = assignment.getShader(assignment.getGroup(pair.second));
+        auto instance = pair.first;
         shader.use();
 
         for(auto &pair : lights) {
@@ -100,18 +26,36 @@ void Scene::drawScene() {
         }
 
         core::makeModel(shader, *core::Data.camera);
-        for(auto instance : instanceList) {
-            instance->draw(shader);
+        instance.draw(shader);
+    }
+}
+
+void Scene::update(float deltaT) {
+    for(auto &pair : instances) {
+        auto instance = pair.first;
+        instance.update(deltaT);
+    }
+}
+
+void Scene::addInstance(Instance &instance, std::string group) {
+    instances.insert(std::pair(instance, group));
+}
+
+Instance& Scene::getInstance(std::string name) {
+    for(auto &pair: instances) {
+        if (pair.first.name == name) {
+            return const_cast<Instance &>(pair.first);
         }
     }
+    throw sceneSearchException("Instance '" + name + "' could not be found");
+}
+
+void Scene::removeInstance(Instance &instance) {
+    instances.erase(instance);
 }
 
 void Scene::addLight(std::string name, Light &light) {
     lights.insert(std::pair(name, light));
-}
-
-bool Scene::removeLight(std::string name) {
-    return lights.erase(name) > 0;
 }
 
 Light& Scene::getLight(std::string name) {
@@ -122,30 +66,13 @@ Light& Scene::getLight(std::string name) {
     }
 }
 
-Instance& Scene::getInstance(std::string name) {
-    for(auto &pair : instances) {
-        for(Instance *instance : pair.second) {
-            if(instance->name == name) {
-                return *instance;
-            }
-        }
-    }
-    throw sceneSearchException("Instance '" + name + "' could not be found");
+void Scene::removeLight(std::string name) {
+    lights.erase(name);
 }
 
-Shader& Scene::getShader(std::string name) {
-    for(auto &shader : shaders) {
-        if(shader.name == name) {
-            return shader;
-        }
-    }
-    throw sceneSearchException("Shader '" + name + "' could not be found");
+void Scene::setAssignment(Assignment &a) {
+    this->assignment = a;
 }
-
-void Scene::update(float deltaT) {
-    for(auto &pair : instances) {
-        for(auto &instance : pair.second) {
-            instance->update(deltaT);
-        }
-    }
+Assignment& Scene::getAssignment() {
+    return this->assignment;
 }
